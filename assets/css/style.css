@@ -2,12 +2,13 @@ md-content {
   background: #A5D6A7;
 }
 .landing_image {
-  background: url('../img/job-shake.png');
-  background-size: cover;
-  height: 400px;
-  line-height: 100px;
+  background: url('../img/job-shake2.png');
+  background-size: fit;
+  /*height: 400px;*/
   font-family: Exo,"Open Sans",Lato,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
   color: #fff;
-  font-size: 3.3rem;
-  margin-bottom: 0;
+  /*font-size: 3.3rem;*/
+}
+.descript {
+  color: rgb(48, 255, 0);
 }
