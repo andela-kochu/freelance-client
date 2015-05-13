@@ -6,11 +6,12 @@ describe('Freelance App Contrl', function(){
 
   beforeEach(inject(function($controller, $rootScope){
     scope = $rootScope.$new();
-    controller = $controller('freelanceCtrl', {
+    controller = $controller('homeCtrl', {
       $scope: scope
     });
   }));
-  it('should be defined', function($controller) {
+
+  it('should be defined', function() {
     expect(controller).toBeDefined();
   });
 });
