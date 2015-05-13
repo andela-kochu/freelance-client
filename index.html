@@ -14,14 +14,22 @@
       <md-button class="md-icon-button" aria-label="More">
         <md-icon md-svg-icon="assets/img/icons/users.svg"></md-icon>
       </md-button>
+      <h2>
         <span>Freelance Application</span>
       </h2>
       <span flex></span>
-      <md-button ng-href="#/home"
+      <md-button hide-sm ng-href="#/home"
                title="login"
                aria-label="login"
                class="md-accent md-raised md-hue-3">
-        LOGIN
+        SIGN IN
+      </md-button>
+      <span hide-sm>or</span>
+      <md-button hide-sm ng-href="#/home"
+               title="login"
+               aria-label="login"
+               class="md-accent md-raised md-hue-3">
+        SIGN UP
       </md-button>
        <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggleRight()">
         <md-icon md-svg-icon="assets/img/icons/menu.svg"></md-icon>
@@ -40,8 +48,18 @@
         <h1 class="md-toolbar-tools">MENU</h1>
       </div>
     </md-toolbar>
-    <md-content layout-padding>
-     Coming soon
+    <md-content layout layout-padding>
+      <md-button ng-href="#/home"
+               title="login"
+               aria-label="login"
+               class="md-accent md-raised md-hue-3">
+        SIGN IN
+      </md-button><md-button ng-href="#/home"
+               title="login"
+               aria-label="login"
+               class="md-accent md-raised md-hue-3">
+        SIGN UP
+      </md-button>
     </md-content>
   </md-sidenav>
   <ui-view></ui-view>

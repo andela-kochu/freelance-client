@@ -16,12 +16,16 @@ angular.module('freelanceApp').config([
               return posts.getAll();
             }]
           }*/
+        })
+        .state('signin', {
+          url: '/signin',
+          templateUrl: 'app/partials/signin.view.html',
+          controller: 'signinCtrl'
+        })
+        .state('signup', {
+          url: '/signup',
+          templateUrl: 'app/partials/signup.view.html',
+          controller: 'signupCtrl'
         });
-      $stateProvider
-        .state('posts', {
-      url: '/posts/{id}',
-      templateUrl: '/posts.ejs',
-      controller: 'PostsCtrl'
-    });
-      $urlRouterProvider.otherwise('home');
+    $urlRouterProvider.otherwise('home');
   }]);
