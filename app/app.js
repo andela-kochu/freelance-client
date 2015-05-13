@@ -1,3 +1,27 @@
 'use strict';
 
-angular.module('freelanceApp', ['ngMaterial']);
+angular.module('freelanceApp', ['ngMaterial', 'ui.router']);
+
+angular.module('freelanceApp').config([
+    '$stateProvider',
+    '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+      $stateProvider
+        .state('home', {
+          url: '/home',
+          templateUrl: 'app/partials/home.view.html',
+          controller: 'homeCtrl'
+          /*resolve: {
+            postPromise: ['posts', function(posts){
+              return posts.getAll();
+            }]
+          }*/
+        });
+      $stateProvider
+        .state('posts', {
+      url: '/posts/{id}',
+      templateUrl: '/posts.ejs',
+      controller: 'PostsCtrl'
+    });
+      $urlRouterProvider.otherwise('home');
+  }]);

@@ -5,69 +5,48 @@
   <link rel="stylesheet" href="libs/angular-material/angular-material.css"/>
   <link rel="stylesheet" href="assets/css/style.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic"/>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="icon" href="https://www.freelancer.com/favicon.ico" type="image/ico">
 </head>
-<body ng-controller="homeCtrl">
-  <div>
-    <md-toolbar class="md-hue-2">
+<body ng-controller='homeCtrl'>
+  <md-toolbar class="md-hue-2 mainBar">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="More">
+        <md-icon md-svg-icon="assets/img/icons/users.svg"></md-icon>
+      </md-button>
+        <span>Freelance Application</span>
+      </h2>
+      <span flex></span>
+      <md-button ng-href="#/home"
+               title="login"
+               aria-label="login"
+               class="md-accent md-raised md-hue-3">
+        LOGIN
+      </md-button>
+       <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggleRight()">
+        <md-icon md-svg-icon="assets/img/icons/menu.svg"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-sidenav  class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <md-toolbar class="md-theme-light">
       <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
-          <md-icon md-svg-icon="assets/img/icons/menu.svg"></md-icon>
+        <md-button class="md-icon-button" aria-label="Close" ng-click="close()">
+          <md-icon md-svg-icon="assets/img/icons/ca.svg"
+               alt="Insert Drive Icon">
+          </md-icon>
         </md-button>
-        <h2>
-          <span>Freelance Application</span>
-        </h2>
         <span flex></span>
-        <md-button class="md-icon-button" aria-label="Favorite">
-          <md-icon md-svg-icon="assets/img/icons/favorite.svg" style="color: deep-purple;"></md-icon>
-        </md-button>
-        <md-button class="md-icon-button" aria-label="More">
-          <md-icon md-svg-icon="assets/img/icons/more_vert.svg"></md-icon>
-        </md-button>
+        <h1 class="md-toolbar-tools">MENU</h1>
       </div>
     </md-toolbar>
-    <md-sidenav  class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-      <md-toolbar class="md-theme-light">
-        <div class="md-toolbar-tools">
-          <h1 class="md-toolbar-tools">MENU</h1>
-          <md-button class="md-icon-button" aria-label="Settings" ng-click="close()">
-            <md-icon md-svg-icon="assets/img/icons/ca.svg"
-                 alt="Insert Drive Icon">
-            </md-icon>
-          </md-button>
-        </div>
-      </md-toolbar>
-      <md-content layout-padding>
-        <form>
-          <md-input-container>
-            <label for="testInput">Test input</label>
-            <input type="text" id="testInput"
-                   ng-model="data" md-sidenav-focus>
-          </md-input-container>
-        </form>
-      </md-content>
-    </md-sidenav>
-    <md-content  layout='row' layout-align='center center'>
-      <md-card flex="95">
-        <div layout="row" layout-sm="column" class="landing_image" layout-margin>
-          <div flex-gt-md='70' flex layout-margin layout-padding>
-            <h1 class='md-display-3' layout-align="center center">
-              <center>...Great teams are built with great teamwork</center>
-            </h1>
-            <h3 class="md-headline descript">
-              <center>Freelance Job Management App brings you the <em>RIGHT</em> developers with the <em>RIGHT</em> skills and attitude to your doorsteps</center>
-            </h3>
-          </div>
-          <div flex>
-            <md-toolbar class="md-hue-2">
-              <h2 class="md-toolbar-tools">
-                <span>Latest Jobs</span>
-              </h2>
-            </md-toolbar>
-
-          </div>
-        </div>
-      </md-card>
+    <md-content layout-padding>
+     Coming soon
     </md-content>
+  </md-sidenav>
+  <ui-view></ui-view>
+  <div class="footer">
+    <center><span>©copyright 2015 &nbsp; Designed by </span><a href="http://github.com/andela-kochu">CHITECH</a></center>
   </div>
   <script src="libs/angular/angular.js"></script>
   <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
@@ -82,3 +61,5 @@
   <script src="app/controllers/home.controller.js"></script>
 </body>
 </html>
+
+<!-- , how: 'MONGO, ANGULARJs, EXPRESS, NODE', comment: 'This is a nice job posting, I enjoyed doing it' -->
