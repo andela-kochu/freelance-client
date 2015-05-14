@@ -10,62 +10,7 @@
 </head>
 <body ng-controller='homeCtrl'>
   <!-- Navigation Bar -->
-  <md-toolbar class="md-hue-2 mainBar">
-    <div class="md-toolbar-tools">
-      <md-button class="md-icon-button" ng-href="#/home" aria-label="More">
-        <md-icon md-svg-icon="assets/img/icons/users.svg"></md-icon>
-      </md-button>
-      <h2>
-        <span ng-href="#/signin">Freelance Application</span>
-      </h2>
-      <span flex></span>
-      <md-button hide-sm ng-href="#/signin"
-               title="login"
-               aria-label="login"
-               class="md-accent md-raised md-hue-3">
-        SIGN IN
-      </md-button>
-      <span hide-sm>or</span>
-      <md-button hide-sm ng-href="#/signup"
-               title="login"
-               aria-label="login"
-               class="md-accent md-raised md-hue-3">
-        SIGN UP
-      </md-button>
-       <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggle()">
-        <md-icon md-svg-icon="assets/img/icons/menu.svg"></md-icon>
-      </md-button>
-    </div>
-  </md-toolbar>
-  <md-sidenav  class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-    <md-toolbar class="md-theme-light">
-      <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Close" ng-click="close()">
-          <md-icon md-svg-icon="assets/img/icons/ca.svg"
-               alt="Insert Drive Icon">
-          </md-icon>
-        </md-button>
-        <span flex></span>
-        <h1 class="md-toolbar-tools">MENU</h1>
-      </div>
-    </md-toolbar>
-    <md-content layout="column" layout-padding>
-      <md-button ng-href="#/signin"
-                ng-click="close()"
-                title="login"
-                aria-label="login"
-                class="md-accent md-raised md-hue-3">
-        SIGN IN
-      </md-button>
-      <md-button ng-href="#/signup"
-              ng-click="close()"
-               title="login"
-               aria-label="login"
-               class="md-accent md-raised md-hue-3">
-        SIGN UP
-      </md-button>
-    </md-content>
-  </md-sidenav>
+  <div ng-include="'app/partials/header.view.html'"></div>
   <!-- View from different routes -->
   <ui-view></ui-view>
   <!-- footer -->
