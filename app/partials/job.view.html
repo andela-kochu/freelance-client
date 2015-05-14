@@ -1,3 +1,54 @@
-<md-content class="md-accent container">
-jobs
+<md-content layout layout-align="center center" style="margin-top: 10px;">
+  <md-card flex-gt-md="80" flex>
+    <div layout-gt-md='row' layout='column'>
+      <md-input-container layout-padding flex class="searchJobs md-primary" style="padding-bottom: 0px;">
+        <label class="label1"><md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Filter</label>
+        <input name="search" ng-model="query">
+      </md-input-container>
+      <md-select flex flex-gt-md="20" placeholder="Sort" ng-model="someVal" style="text-align: center;">
+        <md-option value="1">New</md-option>
+        <md-option value="2">Old</md-option>
+      </md-select>
+      <md-select flex-gt-md="20" flex placeholder="Category" ng-model="someVal" style="text-align: center;">
+        <md-option value="1">Full Time</md-option>
+        <md-option value="2">Contractor</md-option>
+      </md-select>
+    </div>
+    <md-subheader class="md-primary" style="background: rgb(23, 90, 24); margin: 0px; color: white; font-weight: bolder">Job list</md-subheader>
+    <md-content style="height: 450px;">
+    <md-list >
+      <md-list-item  ng-repeat="job in filteredJobs = (jobs | filter: query)">
+        <!-- <img ng-src="{{}}" class="md-avatar" alt=""> -->
+        <div layout-margin layout-padding class="md-list-item-text md-whiteframe-z2">
+          <div>
+            <strong  ng-init="model=19"><h3>Title:&nbsp; {{job.title}}</h3></strong>
+          </div>
+          <div>
+            <strong>Required Skiils:</strong>&nbsp;{{job.skills | truncate:50}}
+          </div>
+          <div>
+            <strong>Tools:</strong>&nbsp;{{job.tools | truncate:100}}
+          </div>
+          <div>
+            <strong>Description:</strong>
+            <md-content class="md-primary" flex offset="5">
+              {{job.description | truncate:150}}
+            </md-content>
+          </div>
+          <div layout-gt-md layout-sm="column" layout-align='center center'>
+            <p flex><strong >Posted:</strong>&nbsp;June 14, 2015</p>
+             <md-button flex-md="15" class="md-raised md-primary md-hue-2">Apply</md-button>
+          </div>
+        </div>
+      </md-list-item>
+    </md-list>
+    <div layout  layout-align="center center" ng-hide="filteredJobs.length">
+    <md-toolbar flex="50"class="md-warn">
+      <div layout layout-align="center center" class="md-toolbar-tools">
+      No Job Found
+      </div>
+    </md-toolbar>
+    </div>
+    </md-content>
+  </md-card>
 </md-content>
