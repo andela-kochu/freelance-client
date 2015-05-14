@@ -1,3 +1,4 @@
+'use strict'
 // Karma configuration
 // Generated on Tue May 12 2015 14:49:06 GMT+0100 (WAT)
 
@@ -15,6 +16,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'libs/angular/angular.js',
+      'libs/angular-ui-router/release/angular-ui-router.js',
+      'node_modules/angular-mocks/angular-mocks.js',
+      'app/**/*.js',
       'tests/unit/*.js'
     ],
 

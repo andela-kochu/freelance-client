@@ -1,9 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="freelanceApp">
 <head>
-  <title></title>
+  <title>Freelance App</title>
+  <link rel="stylesheet" href="libs/angular-material/angular-material.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic"/>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="icon" href="https://www.freelancer.com/favicon.ico" type="image/ico">
 </head>
-<body>
-
+<body ng-controller='homeCtrl'>
+  <!-- Navigation Bar -->
+  <md-toolbar class="md-hue-2 mainBar">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-href="#/home" aria-label="More">
+        <md-icon md-svg-icon="assets/img/icons/users.svg"></md-icon>
+      </md-button>
+      <h2>
+        <span ng-href="#/signin">Freelance Application</span>
+      </h2>
+      <span flex></span>
+      <md-button hide-sm ng-href="#/signin"
+               title="login"
+               aria-label="login"
+               class="md-accent md-raised md-hue-3">
+        SIGN IN
+      </md-button>
+      <span hide-sm>or</span>
+      <md-button hide-sm ng-href="#/signup"
+               title="login"
+               aria-label="login"
+               class="md-accent md-raised md-hue-3">
+        SIGN UP
+      </md-button>
+       <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggle()">
+        <md-icon md-svg-icon="assets/img/icons/menu.svg"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-sidenav  class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <md-toolbar class="md-theme-light">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Close" ng-click="close()">
+          <md-icon md-svg-icon="assets/img/icons/ca.svg"
+               alt="Insert Drive Icon">
+          </md-icon>
+        </md-button>
+        <span flex></span>
+        <h1 class="md-toolbar-tools">MENU</h1>
+      </div>
+    </md-toolbar>
+    <md-content layout="column" layout-padding>
+      <md-button ng-href="#/signin"
+                ng-click="close()"
+                title="login"
+                aria-label="login"
+                class="md-accent md-raised md-hue-3">
+        SIGN IN
+      </md-button>
+      <md-button ng-href="#/signup"
+              ng-click="close()"
+               title="login"
+               aria-label="login"
+               class="md-accent md-raised md-hue-3">
+        SIGN UP
+      </md-button>
+    </md-content>
+  </md-sidenav>
+  <!-- View from different routes -->
+  <ui-view></ui-view>
+  <!-- footer -->
+  <div class="footer">
+    <center><span>©copyright 2015 &nbsp; Designed by </span><a href="http://github.com/andela-kochu">CHITECH</a></center>
+  </div>
+  <script src="libs/angular/angular.js"></script>
+  <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="libs/angular-animate/angular-animate.min.js"></script>
+  <script src="libs/angular-aria/angular-aria.min.js"></script>
+  <script src="libs/angular-material/angular-material.min.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/colorConfig.js"></script>
+  <script src="app/services/sidenav.service.js"></script>
+  <script src="app/filters/filters.js"></script>
+  <script src="app/directives/directives.js"></script>
+  <script src="app/controllers/home.controller.js"></script>
+  <script src="app/controllers/signin.controller.js"></script>
+  <script src="app/controllers/signup.controller.js"></script>
 </body>
 </html>
