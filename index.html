@@ -11,27 +11,27 @@
 <body ng-controller='homeCtrl'>
   <md-toolbar class="md-hue-2 mainBar">
     <div class="md-toolbar-tools">
-      <md-button class="md-icon-button" aria-label="More">
+      <md-button class="md-icon-button" ng-href="#/home" aria-label="More">
         <md-icon md-svg-icon="assets/img/icons/users.svg"></md-icon>
       </md-button>
       <h2>
-        <span>Freelance Application</span>
+        <span ng-href="#/signin">Freelance Application</span>
       </h2>
       <span flex></span>
-      <md-button hide-sm ng-href="#/home"
+      <md-button hide-sm ng-href="#/signin"
                title="login"
                aria-label="login"
                class="md-accent md-raised md-hue-3">
         SIGN IN
       </md-button>
       <span hide-sm>or</span>
-      <md-button hide-sm ng-href="#/home"
+      <md-button hide-sm ng-href="#/signup"
                title="login"
                aria-label="login"
                class="md-accent md-raised md-hue-3">
         SIGN UP
       </md-button>
-       <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggleRight()">
+       <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggle()">
         <md-icon md-svg-icon="assets/img/icons/menu.svg"></md-icon>
       </md-button>
     </div>
@@ -48,13 +48,15 @@
         <h1 class="md-toolbar-tools">MENU</h1>
       </div>
     </md-toolbar>
-    <md-content layout layout-padding>
-      <md-button ng-href="#/home"
-               title="login"
-               aria-label="login"
-               class="md-accent md-raised md-hue-3">
+    <md-content layout="column" layout-padding>
+      <md-button ng-href="#/signin"
+                ng-click="close()"
+                title="login"
+                aria-label="login"
+                class="md-accent md-raised md-hue-3">
         SIGN IN
-      </md-button><md-button ng-href="#/home"
+      </md-button><md-button ng-href="#/signup"
+              ng-click="close()"
                title="login"
                aria-label="login"
                class="md-accent md-raised md-hue-3">
@@ -77,6 +79,8 @@
   <script src="app/filters/filters.js"></script>
   <script src="app/directives/directives.js"></script>
   <script src="app/controllers/home.controller.js"></script>
+  <script src="app/controllers/signin.controller.js"></script>
+  <script src="app/controllers/signup.controller.js"></script>
 </body>
 </html>
 

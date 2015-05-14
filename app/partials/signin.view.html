@@ -1,0 +1,39 @@
+<md-content layout layout-align="center center" layout-margin >
+  <md-card flex-gt-md="40" flex>
+    <md-toolbar layout-padding class="md-warn md-hue-2">
+      <center><h2 class="md-title">Enter your Login credentials Here</h2></center>
+    </md-toolbar>
+    <md-card-content>
+      <md-input-container >
+        <md-icon md-svg-src="assets/img/icons/ic_email_24px.svg" class="email"></md-icon>
+        <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+      </md-input-container>
+      <md-input-container md-no-float>
+        <md-icon md-svg-src="assets/img/icons/padlock.svg" style="display:inline-block;"></md-icon>
+        <input ng-model="user.password" type="text" placeholder="Password (required)" ng-required="true">
+      </md-input-container>
+    <div class="md-actions" layout="row" layout-align="center center">
+      <md-button flex class="md-raised md-primary md-hue-2">Login</md-button>
+    </div>
+    </md-card-content>
+    <md-divider class='md-whiteframe-z1' layout-margin></md-divider>
+     <md-card-content>
+      <span layout layout-align="center center" layout-padding>You can also login with</span>
+      <div class="md-actions" layout="row" layout-align="center center">
+        <md-button  flex layout-padding class="md-raised md-accent md-hue-3 linkedin">
+          Linked<md-icon md-svg-src="assets/img/icons/linkedin.svg" class="linkedin"></md-icon>
+        </md-button>
+      </div>
+      <div class="md-actions" layout="row" layout-align="center center">
+        <md-button flex class="md-raised md-accent md-hue-3 google">
+          <md-icon md-svg-src="assets/img/icons/google-glass.svg" class="google"></md-icon>oogle
+        </md-button>
+      </div>
+      <div class="md-actions" layout="row" layout-align="center center">
+        <md-button flex class="md-raised md-accent md-hue-3 facebook">
+          <md-icon md-svg-src="assets/img/icons/facebook-box.svg" class="facebook"></md-icon>acebook
+        </md-button>
+      </div>
+</md-card-content>
+  </md-card>
+</md-content>
