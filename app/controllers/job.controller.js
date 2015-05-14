@@ -1,5 +1,6 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .controller('jobCtrl', ['$scope', function($scope) {
+  .controller('jobCtrl', ['$scope', 'jobService', function($scope, jobService) {
+    $scope.jobs = jobService.data;
   }]);
