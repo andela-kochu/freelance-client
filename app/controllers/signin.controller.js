@@ -2,6 +2,6 @@
 
 angular.module('freelanceApp')
   .controller('signinCtrl', ['$scope','sideNav', function($scope, sideNav) {
-      $scope.close = sideNav.close;
-      $scope.toggle = sideNav.buildToggler;
-    }]);
+    $scope.close = sideNav.close;
+    $scope.toggle = sideNav.buildToggler;
+  }]);
