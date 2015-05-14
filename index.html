@@ -9,6 +9,7 @@
   <link rel="icon" href="https://www.freelancer.com/favicon.ico" type="image/ico">
 </head>
 <body ng-controller='homeCtrl'>
+  <!-- Navigation Bar -->
   <md-toolbar class="md-hue-2 mainBar">
     <div class="md-toolbar-tools">
       <md-button class="md-icon-button" ng-href="#/home" aria-label="More">
@@ -55,7 +56,8 @@
                 aria-label="login"
                 class="md-accent md-raised md-hue-3">
         SIGN IN
-      </md-button><md-button ng-href="#/signup"
+      </md-button>
+      <md-button ng-href="#/signup"
               ng-click="close()"
                title="login"
                aria-label="login"
@@ -64,7 +66,9 @@
       </md-button>
     </md-content>
   </md-sidenav>
+  <!-- View from different routes -->
   <ui-view></ui-view>
+  <!-- footer -->
   <div class="footer">
     <center><span>©copyright 2015 &nbsp; Designed by </span><a href="http://github.com/andela-kochu">CHITECH</a></center>
   </div>
@@ -83,5 +87,3 @@
   <script src="app/controllers/signup.controller.js"></script>
 </body>
 </html>
-
-<!-- , how: 'MONGO, ANGULARJs, EXPRESS, NODE', comment: 'This is a nice job posting, I enjoyed doing it' -->
