@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('freelanceApp').factory('jobService', [function() {
+angular.module('freelanceApp').factory('JobService', [function() {
   return {
         data: [
                 {
