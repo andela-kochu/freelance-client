@@ -4,7 +4,7 @@ angular.module('freelanceApp')
   .filter('truncate', function () {
     return function (value, max) {
       if(!value) {
-        return '';
+        return;
       }
       if(!max || value.length<=max) {
         return value;
