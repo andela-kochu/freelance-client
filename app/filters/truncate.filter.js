@@ -6,13 +6,20 @@ angular.module('freelanceApp')
       if(!value) {
         return '';
       }
-      if(!max || value.length<=0) {
+      if(!max || value.length<=max) {
         return value;
       }
-      var limit = parseInt(max, 10);
-      var firstcut = value.substr(0, limit);
-      var lastspace = firstcut.lastIndexOf(' ');
-      var finalcut = firstcut.substr(0, lastspace);
-      return finalcut +  ' …';
+      else{
+        var limit = parseInt(max, 10);
+        var firstcut = value.substr(0, limit);
+        var lastspace = firstcut.lastIndexOf(' ');
+        var finalcut = firstcut.substr(0, lastspace);
+        return finalcut +  ' …';
+      }
     };
+  })
+  .filter('sentenceCase', function () {
+    return function (value) {
+      return value.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+      };
   });
