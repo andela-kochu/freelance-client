@@ -1,5 +1,5 @@
 <md-content layout layout-align="center center" style="margin-top: 10px;">
-  <md-card flex-gt-md="80" flex>
+  <md-card flex-gt-md="70" flex>
     <div layout-gt-md='row' layout='column'>
       <md-input-container layout-padding flex class="searchJobs md-primary" style="padding-bottom: 0px;">
         <label class="label1"><md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Filter</label>
@@ -21,23 +21,28 @@
         <!-- <img ng-src="{{}}" class="md-avatar" alt=""> -->
         <div layout-margin layout-padding class="md-list-item-text md-whiteframe-z2">
           <div>
-            <strong  ng-init="model=19"><h3>Title:&nbsp; {{job.title}}</h3></strong>
+            <strong  ng-init="model=19"><h3>{{job.title | sentenceCase}}</h3></strong>
           </div>
           <div>
             <strong>Required Skiils:</strong>&nbsp;{{job.skills | truncate:50}}
           </div>
           <div>
-            <strong>Tools:</strong>&nbsp;{{job.tools | truncate:100}}
+            <strong>Tools:</strong>&nbsp;{{job.tools | truncate:50}}
           </div>
-          <div>
-            <strong>Description:</strong>
-            <md-content class="md-primary" flex offset="5">
-              {{job.description | truncate:150}}
-            </md-content>
-          </div>
-          <div layout-gt-md layout-sm="column" layout-align='center center'>
-            <p flex><strong >Posted:</strong>&nbsp;June 14, 2015</p>
-             <md-button flex-md="15" class="md-raised md-primary md-hue-2">Apply</md-button>
+          <div style="
+            padding: 3px;
+            background: rgba(0, 0, 0, 0.04) !important;
+            ">
+            <div>
+              <strong>Description:</strong>
+              <div class="md-primary" flex offset="5">
+                {{job.description | truncate:150}}
+              </div>
+            </div>
+            <div layout-gt-md layout-sm="column"  layout-align='center center'>
+              <p flex><strong >Posted:</strong>&nbsp;June 14, 2015</p>
+               <md-button flex-md="15" class="md-raised md-primary md-hue-2">Apply</md-button>
+            </div>
           </div>
         </div>
       </md-list-item>
