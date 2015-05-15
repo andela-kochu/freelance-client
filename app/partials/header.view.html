@@ -7,12 +7,20 @@
       <span ng-href="#/signin">Freelance Application</span>
     </h2>
     <span flex></span>
+    <md-button hide-sm ng-href="#/jobs"
+               title="jobs"
+               aria-label="jobs"
+               class="md-accent md-raised md-hue-3">
+      JOBS
+    </md-button>
+    &nbsp;
     <md-button hide-sm ng-href="#/signin"
              title="login"
              aria-label="login"
              class="md-accent md-raised md-hue-3">
       SIGN IN
     </md-button>
+    &nbsp;
     <span hide-sm>or</span>
     <md-button hide-sm ng-href="#/signup"
              title="login"
@@ -38,6 +46,12 @@
     </div>
   </md-toolbar>
   <md-content layout="column" layout-padding>
+    <md-button ng-href="#/jobs"
+               ng-click="close()"
+               title="jobs"
+               aria-label="jobs"
+               class="md-accent md-raised md-hue-3">
+    </md-button>
     <md-button ng-href="#/signin"
               ng-click="close()"
               title="login"

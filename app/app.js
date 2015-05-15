@@ -11,16 +11,16 @@ angular.module('freelanceApp').config([
           url: '/home',
           templateUrl: 'app/partials/home.view.html',
           controller: 'homeCtrl'
-          /*resolve: {
-            postPromise: ['posts', function(posts){
-              return posts.getAll();
-            }]
-          }*/
         })
         .state('signin', {
           url: '/signin',
           templateUrl: 'app/partials/signin.view.html',
           controller: 'signinCtrl'
+        })
+        .state('jobs', {
+          url: '/jobs',
+          templateUrl: 'app/partials/job.view.html',
+          controller: 'jobCtrl'
         })
         .state('signup', {
           url: '/signup',
