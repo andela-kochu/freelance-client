@@ -1,0 +1,71 @@
+<md-content layout layout-align="center center" layout-margin >
+  <md-card flex-gt-md="60" flex>
+    <md-toolbar layout-padding  layout-align="center center" class="md-warn md-hue-2">
+      <span class="md-title">Register With</span>
+    </md-toolbar>
+    <md-card-content  class="md-whiteframe-z2">
+      <div class="md-actions" layout="row" layout-align="center center">
+        <md-button  flex layout-padding class="md-raised md-accent md-hue-3 linkedin">
+          Linked<md-icon md-svg-src="assets/img/icons/linkedin.svg" class="linkedin"></md-icon>
+        </md-button>
+      </div>
+      <div class="md-actions" layout="row" layout-align="center center">
+        <md-button flex class="md-raised md-accent md-hue-3 google">
+          <md-icon md-svg-src="assets/img/icons/google-glass.svg" class="google"></md-icon>oogle
+        </md-button>
+      </div>
+      <div class="md-actions" layout="row" layout-align="center center">
+        <md-button flex class="md-raised md-accent md-hue-3 facebook">
+          <md-icon md-svg-src="assets/img/icons/facebook-box.svg" class="facebook"></md-icon>acebook
+        </md-button>
+      </div>
+    </md-card-content>
+    <md-toolbar layout-padding layout-align="center center" class="md-warn md-hue-2">
+      <span class="md-title">You can also fill the form to Register</span>
+    </md-toolbar>
+    <md-card-content>
+      <md-input-container class="md-icon-float" >
+        <label>Name</label>
+        <md-icon md-svg-src="assets/img/icons/ic_person_24px.svg" class="name"></md-icon>
+        <input ng-model="user.name" type="text"  ng-required="true">
+      </md-input-container>
+      <md-input-container >
+        <md-icon md-svg-src="assets/img/icons/ic_email_24px.svg" class="email"></md-icon>
+        <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+      </md-input-container>
+      <md-input-container >
+        <md-icon md-svg-src="assets/img/icons/ic_vpn_key_24px.svg" class="email"></md-icon>
+        <input ng-model="user.password" type="password" placeholder="Password" ng-required="true">
+      </md-input-container>
+      <md-input-container >
+        <md-icon md-svg-src="assets/img/icons/ic_vpn_key_24px.svg" class="email"></md-icon>
+        <input ng-model="user.password2" type="password" placeholder="Confirm Password" compare-to="user.password" ng-required="true">
+        <div ng-messages="user.password2.$error.pwmatch" ng-messages-include=""></div>
+      </md-input-container>
+      <md-input-container>
+        <md-icon md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon>
+        <input ng-model="user.phone" type="text" placeholder="Phone Number">
+      </md-input-container>
+      <md-input-container>
+        <md-icon md-svg-src="assets/img/icons/ic_flare_24px.svg" style="display:inline-block;"></md-icon>
+        <input ng-model="user.interests" type="text" placeholder="Interests seperated by 'comma'" >
+      </md-input-container>
+      <md-input-container >
+        <md-icon md-svg-src="assets/img/icons/ic_wb_incandescent_24px.svg" class="email"></md-icon>
+        <input ng-model="user.skills" type="email" placeholder="Skills (required)">
+      </md-input-container>
+      <div layout="row">
+        <md-icon md-svg-src="assets/img/icons/gender-512px.svg"></md-icon>&nbsp;
+        <md-select flex placeholder="Gender" ng-model="user.gender">
+          <md-option value="Female">Female</md-option>
+          <md-option value="Male">Male</md-option>
+        </md-select>
+      </div>
+      <div class="md-actions" layout="row" layout-align="center center">
+        <md-button flex class="md-raised md-warn md-hue-2">
+            SignUp
+        </md-button>
+      </div>
+    </md-card-content>
+  </md-card>
+</md-content>
