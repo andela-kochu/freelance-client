@@ -21,7 +21,9 @@
         <!-- <img ng-src="{{}}" class="md-avatar" alt=""> -->
         <div layout-margin layout-padding class="md-list-item-text md-whiteframe-z2">
           <div>
-            <strong  ng-init="model=19"><h3>{{job.title | sentenceCase}}</h3></strong>
+            <strong  ng-init="model=19">
+              <h3>{{job.title | sentenceCase}}</h3>
+            </strong>
           </div>
           <div>
             <strong>Required Skiils:</strong>&nbsp;{{job.skills | truncate:50}}
