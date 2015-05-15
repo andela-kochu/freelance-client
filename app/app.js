@@ -22,6 +22,11 @@ angular.module('freelanceApp').config([
           templateUrl: 'app/partials/job.view.html',
           controller: 'jobCtrl'
         })
+        .state('jobs_single', {
+          url: '/jobs/:_id',
+          templateUrl: 'app/partials/job_single.view.html',
+          controller: 'jobCtrl'
+        })
         .state('signup', {
           url: '/signup',
           templateUrl: 'app/partials/signup.view.html',
