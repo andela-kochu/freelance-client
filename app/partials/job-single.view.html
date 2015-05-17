@@ -1,32 +1,35 @@
-<md-content layout layout-align="center center" layout-margin >
+<md-content layout layout-align="center center" layout-margin class="first">
   <md-card flex-gt-md="60" flex>
-      <md-toolbar layout-padding layout layout-align='center center'>
-        <strong>
-            {{single_job.title | sentenceCase}}
-        </strong>
-      </md-toolbar>
+      <md-subheader class="customsub" layout-padding layout layout-align='center center'>
+        <center>
+          <strong>{{single_job.title | sentenceCase}}</strong>
+        </center>
+      </md-subheader>
       <div layout-margin layout-padding class="md-list-item-text" style="padding: 10px; line-height: 2;">
-          <div>
+          <div ng-show="single_job.skills">
             <strong layout layout-align='center center'>Required Skiils</strong>{{single_job.skills}}
           </div>
           <md-divider></md-divider>
-          <div>
+          <div ng-show="single_job.tools">
             <strong>Tools</strong><br>{{single_job.tools}}
           </div>
           <md-divider></md-divider>
           <div style="
-            padding: 3px;
+            padding: 8px;
             background: rgba(0, 0, 0, 0.04) !important;
-            ">
-            <div>
-              <strong>Description:</strong>
-              <div class="md-primary" flex offset="5">
-                {{single_job.description}}
-              </div>
+            "
+            ng-show="single_job.description"
+            >
+            <strong>Description:</strong>
+            <div class="md-primary description" flex offset="5">
+              {{single_job.description}}
             </div>
           </div>
-          <div  layout-align='center center'>
-            <p flex><strong >Posted:</strong>&nbsp;June 14, 2015</p>
+          <div layout-align='center center' ng-show="single_job.created">
+            <p flex><strong >Posted:</strong>&nbsp;{{single_job.created | date: medium}}</p>
+          </div>
+          <div layout-align='center center' ng-show="single_job.created">
+            <p flex><strong >Author:</strong>&nbsp;{{single_job.author.name | sentenceCase}}</p>
           </div>
           <div layout layout-align='center center'>
             <md-button  flex="40" ng-href="#" class="md-raised md-primary md-hue-2">Apply</md-button>

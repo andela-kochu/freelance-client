@@ -1,54 +1,49 @@
-<md-content layout layout-align="center center" style="margin-top: 10px;">
+<md-content layout layout-align="center center" class="first">
   <md-card flex-gt-md="70" flex>
     <div layout-gt-md='row' layout='column'>
       <md-input-container layout-padding flex class="searchJobs md-primary" style="padding-bottom: 0px;">
         <label class="label1"><md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Filter</label>
         <input name="search" ng-model="query">
       </md-input-container>
-      <div layout flex flex-gt-md="25">
+      <div layout flex flex-gt-md="35">
         <md-icon flex="10" md-svg-icon="assets/img/icons/ic_sort_24px.svg"></md-icon> &nbsp;
-        <md-select flex placeholder="Sort" ng-model="someVal" style="text-align: center;">
-          <md-option value="1">New</md-option>
-          <md-option value="2">Old</md-option>
-        </md-select>
-      </div>
-      <div layout flex flex-gt-md="25">
-        <md-icon flex="10" md-svg-icon="assets/img/icons/ic_sort_24px.svg"></md-icon> &nbsp;
-        <md-select flex placeholder="Category" ng-model="someVal" style="text-align: center;">
-          <md-option value="1">Full Time</md-option>
-          <md-option value="2">Contractor</md-option>
+        <md-select flex placeholder="Sort" ng-model="orderProp" style="text-align: center;">
+          <md-option value="created">New</md-option>
+          <md-option value="-created">Old</md-option>
         </md-select>
       </div>
     </div>
-    <md-subheader class="md-primary" style="background: rgb(23, 90, 24); margin: 0px; color: white; font-weight: bolder">Job list</md-subheader>
-    <md-content style="height: 450px;">
-    <md-list >
-      <md-list-item  ng-repeat="job in filteredJobs = (jobs | filter: query)">
+    <md-subheader class="md-primary customsub">
+      Job list
+    </md-subheader>
+    <md-content flex style="height: 20%;">
+    <md-list flex>
+      <md-list-item ng-repeat="job in filteredJobs = (jobs | filter: query | orderBy: orderProp)">
         <div layout-padding class="md-list-item-text md-whiteframe-z5" style="line-height: 1.5;">
           <div>
             <strong>
               <h3 ng-href="#/jobs/{{job._id}}">{{job.title | sentenceCase}}</h3>
             </strong>
           </div>
-          <div>
+          <div ng-show="job.skills">
             <strong>Required Skiils:</strong>&nbsp;{{job.skills | truncate:50}}
           </div>
-          <div>
+          <div ng-show="job.tools">
             <strong>Tools:</strong>&nbsp;{{job.tools | truncate:50}}
           </div>
           <div style="
-            padding: 3px;
+            padding: 8px;
             background: rgba(0, 0, 0, 0.04) !important;
             ">
-            <div>
+            <div ng-show="job.description">
               <strong>Description:</strong>
-              <div class="md-primary" flex offset="5">
+              <div class="md-primary description" flex offset="5">
                 {{job.description | truncate:150}}
               </div>
             </div>
             <div layout-gt-md layout-sm="column"  layout-align='center center'>
-              <p flex><strong >Posted:</strong>&nbsp;June 14, 2015</p>
-               <md-button ng-href="#/jobs/{{job._id}}" flex-md="15" class="md-raised md-primary md-hue-2">View Job</md-button>
+              <p flex><strong >Posted:</strong>&nbsp;{{job.created | date: medium}}</p>
+               <md-button ng-href="#/jobs/{{job.slug}}" flex-md="15" class="md-raised md-primary md-hue-2">View Job</md-button>
             </div>
           </div>
         </div>
