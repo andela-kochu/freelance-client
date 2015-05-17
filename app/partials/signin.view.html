@@ -1,22 +1,43 @@
-<md-content layout layout-align="center center" layout-margin >
+<md-content layout layout-align="center center" layout-margin class="first">
   <md-card flex-gt-md="40" flex>
-    <md-toolbar layout-padding class="md-warn md-hue-2">
-      <center><h2 class="md-title">Enter your Login credentials Here</h2></center>
+    <md-subheader layout-padding class="md-primary md-hue-2 customsub">
+      <center>
+        <h1 class="md-title">Enter your Login credentials Here</h1>
+      </center>
+    </md-subheader>
+    <md-toolbar class="md-warn" layout-padding ng-hide="hidemsg">
+      <center>
+        <h3 class="md-title">{{msg}}</h3>
+      </center>
     </md-toolbar>
     <md-card-content>
-      <md-input-container >
-        <md-icon md-svg-src="assets/img/icons/ic_email_24px.svg" class="email"></md-icon>
-        <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
-      </md-input-container>
-      <md-input-container md-no-float>
-        <md-icon md-svg-src="assets/img/icons/padlock.svg" style="display:inline-block;"></md-icon>
-        <input ng-model="user.password" type="text" placeholder="Password (required)" ng-required="true">
-      </md-input-container>
-      <div class="md-actions" layout="row" layout-align="center center">
-        <md-button flex class="md-raised md-primary md-hue-2">Login</md-button>
-      </div>
+      <form name="loginForm">
+        <md-input-container >
+          <md-icon md-svg-src="assets/img/icons/ic_email_24px.svg" class="email"></md-icon>
+          <input name="emailName" ng-model="email" type="email" placeholder="Email (required)" ng-required="true">
+          <div ng-messages="loginForm.emailName.$error">
+            <!-- <div ng-message="required">This field is required</div> -->
+            <div ng-message="email">Type in a valid email address</div>
+          </div>
+        </md-input-container>
+        <md-input-container md-no-float>
+          <md-icon md-svg-src="assets/img/icons/padlock.svg" style="display:inline-block;"></md-icon>
+          <input name="passName" ng-model="password" type="password" placeholder="Password (required)" ng-required="true">
+          <div ng-messages="loginForm.passName.$error">
+            <!-- <div ng-message="required">This field is required</div> -->
+          </div>
+        </md-input-container>
+        <div class="md-actions" layout="row" layout-align="center center">
+          <md-button ng-disabled="loginForm.$invalid" flex ng-click="logIn()" class="md-raised md-primary md-hue-2">Login</md-button>
+        </div>
+      </form>
+      <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary">
+      </md-progress-linear>
+
     </md-card-content>
+
     <md-divider class='md-whiteframe-z1' layout-margin></md-divider>
+
     <md-card-content>
       <span layout layout-align="center center" layout-padding>You can also login with</span>
       <div class="md-actions" layout="row" layout-align="center center">

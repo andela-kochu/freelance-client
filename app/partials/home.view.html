@@ -1,4 +1,4 @@
-<md-content class="md-accent container">
+<md-content class="md-accent container first">
   <div layout="row" layout-sm="column" class="landing_image md-whiteframe-z5">
     <div flex-gt-md='70' flex layout-margin>
       <div class='headline'>
@@ -12,21 +12,26 @@
       <center  hide-sm><img ng-src="assets/img/find_talent3.png" width="250" height="150" class="md-card-image" alt="Washed Out"></center>
     </div>
     <div flex layout-margin class="latest">
-      <md-toolbar class="md-hue-1">
-        <h2 class="md-toolbar-tools" layout-align="center center">
-          <span>Recent Jobs</span>
-        </h2>
-      </md-toolbar>
+      <md-subheader class="customsub">
+          <center>
+            <span>Recent Jobs</span>
+          </center>
+      </md-subheader>
       <md-input-container class="searchJobs md-accent">
-        <label class="label1"><md-icon md-svg-icon="assets/img/icons/bulb.svg"></md-icon> &nbsp; &nbsp; Search Jobs</label>
-        <input name="search" ng-model="query">
+        <label class="label1" style="color: rgb(186, 186, 186);"><md-icon md-svg-icon="assets/img/icons/bulb.svg"></md-icon> &nbsp; &nbsp; Search Jobs</label>
+        <input name="search" ng-model="query" style="color: white;">
       </md-input-container>
       <md-list ng-init="items = [{what: 'Javascript jobs'}, {what: 'PHP jobs'}, {what: 'MEAN job'}, {what: 'Javascript jobs'}, {what: 'PHP jobs'}, {what: 'MEAN job'}]">
-        <md-list-item class="md-3-line" ng-repeat="item in items | filter:query | limitTo: 6" >
-          <div class="md-list-item-text" layout layout-align="center center" layout-align-gt-md='end center' >
-            <h3>{{ item.what }}</h3>
-            <h4>{{ item.how }}</h4>
-            <p>{{ item.comment }}</p>
+        <md-list-item class="md-3-line" ng-repeat="job in recentJobs | filter:query | limitTo: 4" >
+          <div class="md-list-item-text"
+                layout="column" layout-align="center center"
+                layout-align-gt-md='end center'
+                style=" background: rgba(0, 0, 0, 0.31);">
+            <a ng-href="#/jobs/{{job.slug}}">
+              <h3 style="color: white;">{{job.title | sentenceCase}}</h3>
+            </a>
+            <h4  style="color: rgb(169, 175, 170);">{{ job.tools | lowercase}}</h4>
+            <h4  style="color: rgb(169, 175, 170);">Posted:&nbsp;{{ job.created | date: medium}}</h4>
           </div>
           <md-divider></md-divider>
         </md-list-item>
@@ -35,9 +40,9 @@
   </div>
   <div layout layout-margin>
     <div flex-gt-md='70' flex>
-      <md-content layout-padding style="height: 100px;padding: 24px;">
+      <md-content layout-padding style="height: 100%;padding: 24px;">
         <h1 class="md-headline">How Freelance App works</h1>
-        <p>
+        <p class="description">
          Post any project you need done and receive bids from our talented freelancers within minutes. Compare their proposals and price, then select the best freelancer to complete your project. Easy!
         </p>
       </md-content>

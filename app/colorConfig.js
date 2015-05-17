@@ -3,5 +3,5 @@ angular.module('freelanceApp')
     $mdThemingProvider.theme('default')
       .primaryPalette('green')
       .accentPalette('lime')
-      .warnPalette('pink');
+      .warnPalette('red');
 });
