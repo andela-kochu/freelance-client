@@ -3,10 +3,10 @@
         <center>Update Profile</center>
     </md-subheader>
       <form layout-margin name="signupForm" style="overflow-y: scroll;">
-        <md-input-container class="md-icon-float" style="margin-top: 0.03em;">
+        <md-input-container  class="md-icon-float" style="margin-top: 0.03em;">
           <label>Name</label>
           <md-icon md-svg-src="assets/img/icons/ic_person_24px.svg" class="name"></md-icon>
-          <input name='name' ng-model="name" type="text"  ng-required="true">
+          <input name='name' ng-model="name" type="text" ng-required="true" value="{{profile.name}}">
           <div ng-messages="signupForm.name.$error">
             <div ng-message="required">*</div>
           </div>
@@ -42,11 +42,13 @@
             <md-option value="Male">Male</md-option>
           </md-select>
         </div>
+        <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+
         <div class="md-actions" layout="row" layout-align="center center">
-          <md-button  flex ng-disabled="signupForm.$invalid" ng-click="signUp()" class="md-raised md-primary md-hue-2">
+         <md-button  class="md-raised md-warn"  ng-click="cancel()">cancel</md-button>
+          <md-button  flex ng-disabled="signupForm.$invalid" ng-click="editProf()" class="md-raised md-primary md-hue-2">
               Update
           </md-button>
-           <md-button class="md-raised md-warn"  ng-click="cancel()">cancel</md-button>
         </div>
       </form>
 <!-- </md-dialog-content> -->

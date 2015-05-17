@@ -4,8 +4,7 @@ angular.module('freelanceApp')
   .factory('JobService', ['$http', function($http) {
     var baseUrl = "http://freelance-app.herokuapp.com/api/v1";
     var jobObject = {
-      jobs: [],
-      singleJob: []
+      jobs: []
     };
     jobObject.getAll = function(){
       return $http.get(baseUrl + "/jobs").success(function(data){

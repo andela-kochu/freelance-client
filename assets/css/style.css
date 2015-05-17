@@ -142,3 +142,15 @@
   min-height: 2.5em;
 }
 
+md-dialog .md-actions .md-button:first-child {
+  color: white !important;
+  background-color: red !important;
+  font-weight: bold;
+}
+
+md-dialog .md-actions .md-button:last-child {
+  color: white !important;
+  background-color: green !important;
+  font-weight: bold;
+}
+
