@@ -13,7 +13,6 @@ angular.module('freelanceApp')
     $scope.$on("$locationChangeStart", function(event) {
             if($window.sessionStorage.token) {
               $scope.isLogged = true;
-              console.log($scope.isLogged)
             }
             else {
               $scope.isLogged = false;
