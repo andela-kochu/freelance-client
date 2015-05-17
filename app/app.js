@@ -70,17 +70,16 @@ angular.module('freelanceApp').config([
                     return config;
                 },
                 'requestError': function(rejection) {
-                        console.log('fbfdb')
+                        console.log('request error')
                     if(rejection.status === 400 || rejection.status === 401 || rejection.status === 403) {
-                      $location.path('/signin');
+                      $window.location.href = '#/signin';
                     }
                     return $q.reject(rejection);
                 },
                 'responseError': function(rejection) {
-                    // do something on error
-                    console.log('fdjkdfjk')
-                   if(rejection.status === 400 || rejection.status === 401 || rejection.status === 403) {
-                      $location.path('/signin');
+                    console.log('response error', rejection)
+                   if(rejection.status === 401 || rejection.status === 403) {
+                      $window.location.href = '#/signin';
                     }
                     return $q.reject(rejection);
                 }
