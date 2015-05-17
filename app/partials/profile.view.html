@@ -1,0 +1,128 @@
+<md-content class="first">
+  <md-card layout="row" layout-sm="column">
+    <div flex  flex-order="2">
+      <md-subheader hide-sm class="md-hue-1 customsub">
+        <center><span>Tools</span></center>
+      </md-subheader>
+      <md-content flex layout="column" layout-margin>
+        <md-button ng-click="editUser($event)"
+                title="login"
+                aria-label="login"
+                class="md-accent md-raised md-hue-3 md-whiteframe-z1"
+                >
+          Edit Profile
+        </md-button>
+        <md-button
+                ng-click="close()"
+                title="login"
+                aria-label="login"
+                class="md-accent md-raised md-hue-3">
+          Post a Job
+        </md-button>
+        <md-button ng-href="#"
+                ng-click="close()"
+                title="login"
+                aria-label="login"
+                class="md-accent md-raised md-hue-3">
+          View Posted Jobs
+        </md-button>
+        <md-button ng-href="#"
+                ng-click="close()"
+                title="login"
+                aria-label="login"
+                class="md-accent md-raised md-hue-3">
+          View Applicants
+        </md-button>
+        <md-button ng-href="#"
+                ng-click="close()"
+                title="login"
+                aria-label="login"
+                class="md-accent md-raised md-hue-3">
+          Delete Account
+        </md-button>
+      </md-content>
+    </div>
+    <div flex flex-gt-md='70'>
+      <md-subheader class="customsub">
+        <center>
+          <span
+            style="font-weight: bolder;">
+            Profile
+          </span>
+        </center>
+      </md-subheader>
+      <md-content class="md-whiteframe-z2" layout="column" layout-align="center center">
+      <md-progress-linear md-mode="indeterminate" ng-hide="hideOutProg" class="md-primary">
+      </md-progress-linear>
+        <div layout layout-align="center center" layout-margin ng-hide="profile.picture">
+            <img ng-src="/assets/img/avatar.png" class="md-avatar" alt="Kignsley Ochu" />
+        </div>
+        <div layout layout-align="center center" layout-margin ng-show="profile.picture">
+            <img ng-src="{{profile.picture}}" class="md-avatar" alt="Kignsley Ochu" />
+        </div>
+        <md-divider></md-divider>
+        <div layout layout-align="center center"
+            layout-margin class="md-headline"
+            >
+          <strong>
+           {{profile.name}}
+          </strong>
+        </div>
+        <div layout layout-sm="column" layout-margin class="md-title" layout layout-align="center center">
+          <md-icon md-svg-src="assets/img/icons/ic_email_24px.svg" class="email"></md-icon>
+          <span>
+            &nbsp;
+           {{profile.emailAddress}}
+          </span>
+        </div>
+        <div ng-show="profile.phoneNumber"
+                layout layout-sm="column"
+                layout-margin class="md-title"
+                layout layout-align="center center">
+          <md-icon  md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon>
+          <span>
+            &nbsp;
+            {{profile.phoneNumber}}
+          </span>
+        </div>
+        <div layout layout-sm="column"
+             ng-show="profile.interests"
+             layout-margin class="md-title"
+             layout layout-align="center center">
+          <strong>Interests:</strong>
+          <span>
+            &nbsp;
+            {{profile.interests}}
+          </span>
+        </div>
+        <div layout layout-sm="column"
+             ng-show="profile.skill"
+             layout-margin class="md-title"
+             layout layout-align="center center">
+          <strong>Skills:</strong>
+          <center>
+            &nbsp;
+            {{profile.skill}}
+          </center>
+        </div>
+        <div layout layout-margin class="md-title" ng-show="profile.gender">
+          <md-icon  md-svg-src="assets/img/icons/gender-512px.svg"></md-icon>
+          &nbsp;
+          &nbsp;
+          <span>
+            {{profile.gender}}
+          </span>
+        </div>
+        <div layout layout-margin class="md-title" ng-show="profile.created">
+          <md-icon  md-svg-src="assets/img/icons/ic_access_time_24px.svg"></md-icon>
+          &nbsp;
+          &nbsp;
+          <span>
+            {{profile.created | date: medium}}
+          </span>
+        </div>
+        <md-divider></md-divider>
+      </md-content>
+    </div>
+  </md-card>
+</md-content>

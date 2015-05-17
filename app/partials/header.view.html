@@ -16,6 +16,7 @@
     &nbsp;
     <md-button hide-sm ng-href="#/signin"
              title="login"
+             ng-hide="isLogged"
              aria-label="login"
              class="md-accent md-raised md-hue-3">
       SIGN IN
@@ -23,9 +24,25 @@
     &nbsp;
     <md-button hide-sm ng-href="#/signup"
              title="login"
+             ng-hide="isLogged"
              aria-label="login"
              class="md-accent md-raised md-hue-3">
       SIGN UP
+    </md-button>
+    <md-button hide-sm ng-href="#/profile"
+             title="profile"
+             ng-show="isLogged"
+             aria-label="profile"
+             class="md-accent md-raised md-hue-3">
+      PROFILE
+    </md-button>
+    <md-button hide-sm
+             title="login"
+             ng-show="isLogged"
+             ng-click="logout()"
+             aria-label="login"
+             class="md-accent md-raised md-hue-3">
+      LOG OUT
     </md-button>
      <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggle()">
       <md-icon md-svg-icon="assets/img/icons/menu.svg"></md-icon>
@@ -54,17 +71,36 @@
     </md-button>
     <md-button ng-href="#/signin"
               ng-click="close()"
+              ng-hide="isLogged"
               title="login"
               aria-label="login"
               class="md-accent md-raised md-hue-3">
       SIGN IN
     </md-button>
     <md-button ng-href="#/signup"
-            ng-click="close()"
-             title="login"
-             aria-label="login"
+             ng-click="close()"
+             ng-hide="isLogged"
+             title="signup"
+             aria-label="signup"
              class="md-accent md-raised md-hue-3">
       SIGN UP
+    </md-button>
+     <md-button
+             ng-href="#/profile"
+             ng-click="close()"
+             ng-show="isLogged"
+             title="profile"
+             aria-label="profile"
+             class="md-accent md-raised md-hue-3">
+     PROFILE
+    </md-button>
+    <md-button
+             ng-click="logout(); close()"
+             ng-show="isLogged"
+             title="logut"
+             aria-label="logout"
+             class="md-accent md-raised md-hue-3">
+      LOG OUT
     </md-button>
   </md-content>
 </md-sidenav>
