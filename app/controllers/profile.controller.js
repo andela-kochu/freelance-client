@@ -10,7 +10,7 @@ angular.module('freelanceApp')
       $scope.editUser = function(ev) {
         $mdDialog.show({
           controller: editUserCtrl,
-          templateUrl: '../app/partials/edit.html',
+          templateUrl: '../app/partials/edit.user.modal.html',
           targetEvent: ev,
         })
         .then(function(answer) {
