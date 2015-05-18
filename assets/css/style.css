@@ -101,7 +101,7 @@
   }
   md-dialog {
     min-width: 60% !important;
-    padding: 1em !important;
+    padding: 0.2em !important;
     top: -5.5em !important;
   }
 }
@@ -115,7 +115,7 @@
   }
   md-dialog {
     min-width: 80% !important;
-    padding: 1em !important;
+    padding: 0.2em !important;
     top: -5.5em !important;
   }
 }
@@ -145,12 +145,16 @@
 md-dialog .md-actions .md-button:first-child {
   /*color: black !important;*/
   /*background-color: red !important;*/
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 md-dialog .md-actions .md-button:last-child {
   color: black !important;
   /*background-color: red !important;*/
-  font-weight: bold;
+  /*font-weight: bold;*/
+}
+
+md-tabs {
+  width: 100% !important;
 }
 
