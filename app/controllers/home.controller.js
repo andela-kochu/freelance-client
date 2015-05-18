@@ -6,7 +6,6 @@ angular.module('freelanceApp')
                AuthService, JobService, $location,  $localStorage, $window, $timeout) {
     $scope.close = sideNav.close;
     $scope.toggle = sideNav.buildToggler;
-    JobService.getAll();
     $scope.recentJobs = JobService.jobs;
     $scope.isLogged = AuthService.isLogged;
 

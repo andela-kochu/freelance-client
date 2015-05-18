@@ -16,7 +16,12 @@ angular.module('freelanceApp').config([
         .state('home', {
           url: '/home',
           templateUrl: 'app/partials/home.view.html',
-          controller: 'homeCtrl'
+          controller: 'homeCtrl',
+          resolve: {
+            recentJobsPromise: ['JobService', function(JobService){
+              return JobService.getAll();
+            }]
+          }
         })
         .state('jobs', {
           url: '/jobs',
@@ -69,6 +74,14 @@ angular.module('freelanceApp').config([
                     }
                     return config;
                 },
+
+                // optional method
+                'response': function(response) {
+                  // do something on success
+                  console.log(response)
+                  return response;
+                },
+
                 'requestError': function(rejection) {
                         console.log('request error')
                     if(rejection.status === 400 || rejection.status === 401 || rejection.status === 403) {

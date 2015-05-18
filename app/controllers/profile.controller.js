@@ -56,6 +56,50 @@ angular.module('freelanceApp')
             }, 3000);
         };
       }
+      $scope.postJob = function(ev) {
+              $mdDialog.show({
+                controller: postJobCtrl,
+                templateUrl: '../app/partials/post.job.modal.html',
+                targetEvent: ev,
+              })
+              .then(function(answer) {
+                $scope.alert = 'You said the information was "' + answer + '".';
+                }, function() {
+                $scope.alert = 'You cancelled the dialog.';
+                });
+            };
+            function postJobCtrl($scope, $mdDialog) {
+              $scope.cancel = function() {
+                $mdDialog.cancel();
+              };
+
+              $scope.hideProg = true;
+              $scope.post = function() {
+                $scope.hideProg = false;
+                var formData = {
+                        name: $scope.name,
+                        password: $scope.password,
+                        phoneNumber: $scope.phone,
+                        interests: $scope.interests,
+                        skill: $scope.skills,
+                        gender: $scope.gender
+                    };
+                  $timeout(function() {
+                    UserService.editProf(formData)
+                      .then(
+                        function(res) {
+                          $scope.hideProg = true;
+                          console.log(res.data)
+                          UserService.profile();
+                         },
+                        function(res) {
+                        $scope.hideProg = true;
+                        $scope.msg = res.data.message;
+                      });
+                  $mdDialog.hide();
+                  }, 3000);
+              };
+            }
 
       $scope.deleteUser = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
