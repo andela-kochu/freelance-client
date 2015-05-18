@@ -34,7 +34,22 @@
                   <p flex><strong >Posted:</strong>&nbsp;{{job.created | date: medium}}</p>
                 </div>
               </div>
-              <md-button ng-href="#/jobs/{{job.slug}}" flex-md="15" class="md-raised md-primary md-hue-2">View Job</md-button>
+              <div>
+                <md-button ng-href="#/jobs/{{job.slug}}" flex-md="15" class="md-raised md-primary md-hue-2">
+                  View Job
+                </md-button>
+              </div>
+              <div>
+                <md-button ng-click="delete = true" flex-md="15" ng-hide="delete" class="md-raised md-warn md-hue-2">
+                  Delete Job
+                </md-button>
+                <md-button ng-click="delete = false" ng-show="delete" flex-md="15" class="md-raised md-primary md-hue-2">
+                  Cancel
+                </md-button>
+                <md-button ng-click="deleteJob(job.slug)" ng-show="delete" flex-md="15" class="md-raised md-warn md-hue-2">
+                  Confirm Delete
+                </md-button>
+              </div>
             </div>
           </md-tab>
           <md-tab label="Edit Job">
@@ -75,7 +90,7 @@
             </form>
           </md-tab>
           <md-tab label="View Applicants">
-            <md-toolbar layout layout-align="center center" class="md-warn">
+            <md-toolbar layout layout-margin layout-align="center center" class="md-warn">
               No Applicants So far
             </md-toolbar>
           </md-tab>

@@ -28,9 +28,8 @@ angular.module('freelanceApp')
          $scope.interests = UserService.userData.interests;
          $scope.skills = UserService.userData.skill;
          $scope.gender = UserService.userData.gender;
-    //    $scope.profile = UserService.userData;
-        $scope.hideProg = true;
-        $scope.editProf = function() {
+          $scope.hideProg = true;
+          $scope.editProf = function() {
           $scope.hideProg = false;
           var formData = {
                   name: $scope.name,
