@@ -10,7 +10,7 @@ angular.module('freelanceApp')
       $scope.editUser = function(ev) {
         $mdDialog.show({
           controller: editUserCtrl,
-          templateUrl: '../app/partials/edit.user.modal.html',
+          templateUrl: 'app/partials/edit.user.modal.html',
           targetEvent: ev,
         })
         .then(function(answer) {
@@ -59,7 +59,7 @@ angular.module('freelanceApp')
       $scope.postJob = function(ev) {
               $mdDialog.show({
                 controller: postJobCtrl,
-                templateUrl: '../app/partials/post.job.modal.html',
+                templateUrl: 'app/partials/post.job.modal.html',
                 targetEvent: ev,
               })
               .then(function(answer) {
@@ -123,7 +123,7 @@ angular.module('freelanceApp')
       $scope.viewPostedJobs = function(ev) {
           $mdDialog.show({
               controller: viewPostJobCtrl,
-              templateUrl: '../app/partials/view.post.job.modal.html',
+              templateUrl: 'app/partials/view.post.job.modal.html',
               targetEvent: ev,
             })
             .then(function(answer) {
