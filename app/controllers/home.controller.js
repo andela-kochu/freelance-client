@@ -10,22 +10,22 @@ angular.module('freelanceApp')
     $scope.isLogged = AuthService.isLogged;
 
     $scope.$on("$locationChangeStart", function(event) {
-            if($window.sessionStorage.token) {
-              $scope.isLogged = true;
-            }
-            else {
-              $scope.isLogged = false;
-            }
-        });
+      if($window.sessionStorage.token) {
+        $scope.isLogged = true;
+      }
+      else {
+        $scope.isLogged = false;
+      }
+    });
 
     $rootScope.hideOutProg = true;
     $scope.logout = function() {
-        $rootScope.hideOutProg = false;
-        $window.sessionStorage.clear();
-        $timeout(function(){
-          $rootScope.hideOutProg = true;
-          AuthService.isLogged = false;
-          $location.url("/signin");
-        }, 1500);
-      }
+      $rootScope.hideOutProg = false;
+      $window.sessionStorage.clear();
+      $timeout(function(){
+        $rootScope.hideOutProg = true;
+        AuthService.isLogged = false;
+        $location.url("/signin");
+      }, 1500);
+    };
   }]);
