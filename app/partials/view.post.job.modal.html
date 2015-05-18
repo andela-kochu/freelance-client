@@ -1,0 +1,94 @@
+<md-dialog aria-label="Update Profile">
+    <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+    <md-subheader class="customsub">
+        <center>My Jobs</center>
+    </md-subheader>
+     <md-content>
+      <md-list flex>
+      <md-list-item flex ng-repeat="job in userJobs | orderBy: orderProp">
+        <md-tabs md-dynamic-height md-selected="selectedIndex" md-border-bottom> <!-- md-dynamic-height md-border-bottom> -->
+          <md-tab label="JOB">
+            <div layout-padding layout-margin class="md-list-item-text md-whiteframe-z5" style="line-height: 1.5;">
+              <div>
+                <strong>
+                  <h3 ng-href="#/jobs/{{job._id}}">{{job.title | sentenceCase}}</h3>
+                </strong>
+              </div>
+              <div ng-show="job.skills">
+                <strong>Required Skiils:</strong>&nbsp;{{job.skills | truncate:50}}
+              </div>
+              <div ng-show="job.tools">
+                <strong>Tools:</strong>&nbsp;{{job.tools | truncate:50}}
+              </div>
+              <div style="
+                padding: 8px;
+                background: rgba(0, 0, 0, 0.04) !important;
+                ">
+                <div ng-show="job.description">
+                  <strong>Description:</strong>
+                  <div class="md-primary description" flex offset="5">
+                    {{job.description | truncate:150}}
+                  </div>
+                </div>
+                <div layout-gt-md layout-sm="column"  layout-align='center center'>
+                  <p flex><strong >Posted:</strong>&nbsp;{{job.created | date: medium}}</p>
+                </div>
+              </div>
+              <md-button ng-href="#/jobs/{{job.slug}}" flex-md="15" class="md-raised md-primary md-hue-2">View Job</md-button>
+            </div>
+          </md-tab>
+          <md-tab label="Edit Job">
+            <form layout-margin name="postJobForm" style="overflow-y: scroll;">
+              <md-input-container  class="md-icon-float" style="margin-top: 0.03em;">
+                <label>Title</label>
+                  <!-- <md-icon md-svg-src="assets/img/icons/ic_person_24px.svg" class="name"></md-icon> -->
+                <input name='title' ng-model="title" type="text" ng-required="true" value="{{job.title}}">
+                <div ng-messages="postJobForm.title.$error">
+                  <div ng-message="required">*</div>
+                </div>
+                </md-input-container>
+                <md-input-container >
+                  <label>Description</label>
+                  <!-- <md-icon md-svg-src="assets/img/icons/ic_vpn_key_24px.svg" class="email"></md-icon> -->
+                  <textarea name='description' ng-model="description" min="100" ng-required="true">
+                  {{job.description}}
+                  </textarea>
+                  <div ng-messages="postJobForm.description.$error">
+                    <div ng-message="required">*</div>
+                  </div>
+                </md-input-container>
+                <md-input-container>
+                  <!-- <md-icon md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon> -->
+                  <input name="tools" ng-model="tools" type="text" placeholder="Tools" value="{{job.tools}}">
+                </md-input-container>
+                <md-input-container>
+                  <!-- <md-icon md-svg-src="assets/img/icons/ic_flare_24px.svg" style="display:inline-block;"></md-icon> -->
+                  <input ng-model="skiils" type="text" placeholder="Required Skills" value="{{job.skills}}">
+                </md-input-container>
+                <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+                <div class="md-actions" layout="row" layout-align="center center">
+                  <md-button   flex ng-disabled="postJobForm.$invalid" ng-click="submitJob()"
+                      class="md-raised md-primary md-hue-2">
+                      Submit
+                  </md-button>
+                </div>
+            </form>
+          </md-tab>
+          <md-tab label="View Applicants">
+            <md-toolbar layout layout-align="center center" class="md-warn">
+              No Applicants So far
+            </md-toolbar>
+          </md-tab>
+
+        </md-tabs>
+      </md-list-item>
+      </md-list>
+    </md-content>
+      <div class="md-actions" layout="row" layout-align="center center">
+        <md-button class="md-raised md-warn"
+                   style="background-color: red !important; color:white!important;"
+                   ng-click="cancel()">Go Back
+        </md-button>
+      </div>
+</md-dialog>
+
