@@ -29,13 +29,13 @@ angular.module('freelanceApp')
         $scope.signUp = function() {
           $scope.hideProg = false;
           var formData = {
-                  name: $scope.name,
-                  emailAddress: $scope.email,
-                  password: $scope.password,
-                  phoneNumber: $scope.phone,
-                  interests: $scope.interests,
-                  skills: $scope.skills,
-                  gender: $scope.gender
+                name: $scope.name,
+                emailAddress: $scope.email,
+                password: $scope.password,
+                phoneNumber: $scope.phone,
+                interests: $scope.interests,
+                skills: $scope.skills,
+                gender: $scope.gender
               };
           UserService.signUp(formData)
             .success(function(data) {
@@ -45,6 +45,7 @@ angular.module('freelanceApp')
               $location.path("/profile");
             })
             .error(function(data, status) {
+              console.log(status, data);
               $scope.hidemsg = false;
               $scope.hideProg = true;
               $scope.msg = data.message;
