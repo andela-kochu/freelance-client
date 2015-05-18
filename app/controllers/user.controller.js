@@ -22,6 +22,7 @@ angular.module('freelanceApp')
           .error(function(data, status) {
             $scope.hidemsg = false;
             $scope.hideProg = true;
+            console.log(data, status)
             $scope.msg = data.message;
           });
       };

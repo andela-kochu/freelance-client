@@ -7,10 +7,14 @@
       <a ng-href="#/signin">Freelance Application</a>
     </h2>
     <span flex></span>
+    <h2 flex hide-sm ng-show="isLogged">
+      Welcome!
+    </h2>
+    &nbsp;
     <md-button hide-sm ng-href="#/jobs"
                title="jobs"
                aria-label="jobs"
-               class="md-accent md-raised md-hue-3">
+               class="md-primary md-raised md-hue-1">
       JOBS
     </md-button>
     &nbsp;
@@ -18,7 +22,7 @@
              title="login"
              ng-hide="isLogged"
              aria-label="login"
-             class="md-accent md-raised md-hue-3">
+             class="md-primary md-raised md-hue-1">
       SIGN IN
     </md-button>
     &nbsp;
@@ -26,14 +30,14 @@
              title="login"
              ng-hide="isLogged"
              aria-label="login"
-             class="md-accent md-raised md-hue-3">
+             class="md-primary md-raised md-hue-1">
       SIGN UP
     </md-button>
     <md-button hide-sm ng-href="#/profile"
              title="profile"
              ng-show="isLogged"
              aria-label="profile"
-             class="md-accent md-raised md-hue-3">
+             class="md-primary md-raised md-hue-1">
       PROFILE
     </md-button>
     <md-button hide-sm
@@ -41,7 +45,7 @@
              ng-show="isLogged"
              ng-click="logout()"
              aria-label="login"
-             class="md-accent md-raised md-hue-3">
+             class="md-primary md-raised md-hue-1">
       LOG OUT
     </md-button>
      <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggle()">
@@ -66,7 +70,7 @@
                ng-click="close()"
                title="jobs"
                aria-label="jobs"
-               class="md-accent md-raised md-hue-3">
+               class="md-primary md-raised md-hue-1">
       JOBS
     </md-button>
     <md-button ng-href="#/signin"
@@ -74,7 +78,7 @@
               ng-hide="isLogged"
               title="login"
               aria-label="login"
-              class="md-accent md-raised md-hue-3">
+              class="md-primary md-raised md-hue-1">
       SIGN IN
     </md-button>
     <md-button ng-href="#/signup"
@@ -82,7 +86,7 @@
              ng-hide="isLogged"
              title="signup"
              aria-label="signup"
-             class="md-accent md-raised md-hue-3">
+             class="md-primary md-raised md-hue-1">
       SIGN UP
     </md-button>
      <md-button
@@ -91,7 +95,7 @@
              ng-show="isLogged"
              title="profile"
              aria-label="profile"
-             class="md-accent md-raised md-hue-3">
+             class="md-primary md-raised md-hue-1">
      PROFILE
     </md-button>
     <md-button
@@ -99,7 +103,7 @@
              ng-show="isLogged"
              title="logut"
              aria-label="logout"
-             class="md-accent md-raised md-hue-3">
+             class="md-primary md-raised md-hue-1">
       LOG OUT
     </md-button>
   </md-content>

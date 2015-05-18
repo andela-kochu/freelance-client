@@ -26,14 +26,13 @@
           <div class="md-list-item-text"
                 layout="column" layout-align="center center"
                 layout-align-gt-md='end center'
-                style=" background: rgba(0, 0, 0, 0.31);">
+                style=" background: rgba(0, 0, 0, 0.04);">
             <a ng-href="#/jobs/{{job.slug}}">
-              <h3 style="color: white;">{{job.title | sentenceCase}}</h3>
+              <h3 style="color: black;">{{job.title | sentenceCase}}</h3>
             </a>
-            <h4  style="color: rgb(169, 175, 170);">{{ job.tools | lowercase}}</h4>
-            <h4  style="color: rgb(169, 175, 170);">Posted:&nbsp;{{ job.created | date: medium}}</h4>
+            <h4  style="color: rgb(99, 99, 99);">{{ job.tools | lowercase}}</h4>
+            <h4  style="color: rgb(55, 55, 57);">Posted:&nbsp;{{ job.created | date: medium}}</h4>
           </div>
-          <md-divider></md-divider>
         </md-list-item>
       </md-list>
     </div>
