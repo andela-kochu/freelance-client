@@ -78,7 +78,7 @@ angular.module('freelanceApp').config([
                 // optional method
                 'response': function(response) {
                   // do something on success
-                  console.log(response)
+                  // console.log(response)
                   return response;
                 },
 
