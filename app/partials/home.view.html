@@ -2,14 +2,13 @@
   <div layout="row" layout-sm="column" class="landing_image md-whiteframe-z5">
     <div flex-gt-md='70' flex layout-margin>
       <div class='headline'>
-        <h1 class='md-display-3' layout-align="center center">
+        <h1 class='md-display-1' layout-align="center center">
           <center>Great teams are built with great teamwork</center>
         </h1>
-        <h3 class="md-title descript" hide-sm>
+        <h3 class="md-subhead descript" hide-sm>
           <center>Freelance Job Management System brings the <em>right</em> developers with the <em>right</em> skillset and attitude to your doorsteps</center>
         </h3>
       </div>
-      <center  hide-sm><img ng-src="assets/img/find_talent3.png" width="250" height="150" class="md-card-image" alt="Washed Out"></center>
     </div>
     <div flex layout-margin class="latest">
       <md-subheader class="customsub">
@@ -18,10 +17,12 @@
           </center>
       </md-subheader>
       <md-input-container class="searchJobs md-accent">
-        <label class="label1" style="color: rgb(186, 186, 186);"><md-icon md-svg-icon="assets/img/icons/bulb.svg"></md-icon> &nbsp; &nbsp; Search Jobs</label>
-        <input name="search" ng-model="query" style="color: white;">
+        <label class="label1" style="color: rgba(16, 2, 2, 0.55);">
+          <md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Search Jobs
+        </label>
+        <input name="search" ng-model="query">
       </md-input-container>
-      <md-list ng-init="items = [{what: 'Javascript jobs'}, {what: 'PHP jobs'}, {what: 'MEAN job'}, {what: 'Javascript jobs'}, {what: 'PHP jobs'}, {what: 'MEAN job'}]">
+      <md-list>
         <md-list-item class="md-3-line" ng-repeat="job in recentJobs | filter:query | limitTo: 4" >
           <div class="md-list-item-text"
                 layout="column" layout-align="center center"
