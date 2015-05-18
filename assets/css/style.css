@@ -3,29 +3,19 @@
 }
 
 .landing_image {
-  background: url('../img/job-shake2.png');
+  background: url('../img/job-shake1.png');
   background-size: fit;
   color: #fff;
-}
-
-.headline {
-  margin-top: 7em !important;
-  margin-bottom: 4.5em !important;
+  margin-top: .3em;
 }
 
 .descript {
   color: rgba(255, 255, 255, 0.62);
-  background-color: rgba(23, 22, 22, 0.43);
-  padding: 1em;
-  margin-top: 3em;
-  margin-bottom: .5em !important;
+  margin-top: 2em !important;
 }
 
 a {
   text-decoration: none !important;
-}
-.latest {
-  background-color: #fff;
 }
 
 .mlabel {
@@ -107,6 +97,14 @@ a {
     padding: 0.2em !important;
     top: -5.5em !important;
   }
+  .headline {
+    margin-top: 22em !important;
+    background-color: rgba(0, 0, 0, 0.74) !important;
+    padding: 1em !important;
+  }
+  .latest {
+    background-color: rgba(255, 255, 255, 0.92);
+  }
 }
 
 @media (max-width: 960px) {
@@ -120,6 +118,15 @@ a {
     min-width: 70% !important;
     padding: 0.2em !important;
     top: -5.5em !important;
+  }
+  .headline {
+    margin-top: 3em !important;
+    margin-bottom: 3em !important;
+    background-color: rgba(0, 0, 0, 0.74) !important;
+    padding: 1em !important;
+  }
+  .latest {
+    background-color: rgba(255, 255, 255, 0.99);
   }
 }
 
