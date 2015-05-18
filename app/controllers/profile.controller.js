@@ -2,8 +2,8 @@
 
 angular.module('freelanceApp')
   .controller('profileCtrl', ['$scope', '$rootScope', '$location', '$window',
-            'UserService', 'AuthService', '$mdDialog', '$timeout',
-    function ($scope, $rootScope, $location, $window, UserService, AuthService, $mdDialog, $timeout) {
+            'UserService', 'JobService', 'AuthService', '$mdDialog', '$timeout',
+    function ($scope, $rootScope, $location, $window, UserService, JobService, AuthService, $mdDialog, $timeout) {
 
       $scope.profile = UserService.userData;
 
@@ -45,7 +45,7 @@ angular.module('freelanceApp')
                 .then(
                   function(res) {
                     $scope.hideProg = true;
-                    console.log(res.data)
+                    console.log(res.data);
                     UserService.profile();
                    },
                   function(res) {
@@ -57,12 +57,54 @@ angular.module('freelanceApp')
         };
       }
 
+      $scope.postJob = function(ev) {
+              $mdDialog.show({
+                controller: postJobCtrl,
+                templateUrl: '../app/partials/post.job.modal.html',
+                targetEvent: ev,
+              })
+              .then(function(answer) {
+                $scope.alert = 'You said the information was "' + answer + '".';
+                }, function() {
+                $scope.alert = 'You cancelled the dialog.';
+                });
+            };
+            function postJobCtrl($scope, $mdDialog) {
+              $scope.cancel = function() {
+                $mdDialog.cancel();
+              };
+
+              $scope.hideProg = true;
+              $scope.submitJob = function() {
+                $scope.hideProg = false;
+                var formData = {
+                    title: $scope.title,
+                    description: $scope.description,
+                    tools: $scope.tools,
+                    skills: $scope.skills
+                  };
+                  $timeout(function() {
+                    JobService.postJob(formData)
+                      .then(
+                        function(data) {
+                          $scope.hideProg = true;
+                          // console.log(data)
+                         },
+                        function(data) {
+                          // console.log(data)
+                        $scope.hideProg = true;
+                        $scope.msg = data.message;
+                      });
+                  $mdDialog.hide();
+                  }, 3000);
+              };
+            }
+
       $scope.deleteUser = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
         var confirm = $mdDialog.confirm()
           .title('Would you like to delete your Account?')
           .content('You will loose all your data if you confirm this. If you clicked this accidentally. Please, click CANCEL to exit')
-          .ariaLabel('Lucky day')
           .ok('Please, Continue')
           .cancel('CANCEL')
           .targetEvent(ev);
@@ -72,11 +114,35 @@ angular.module('freelanceApp')
           var def = UserService.deleteUser();
           $timeout(function() {
             def.then(function(res){
-              // console.log(res)
               $window.sessionStorage.clear();
               $window.location.href = '#/home';
             });
           }, 3000);
         });
       };
+      $scope.hideProg = false;
+      $scope.viewPostedJobs = function(ev) {
+          $mdDialog.show({
+              controller: viewPostJobCtrl,
+              templateUrl: '../app/partials/view.post.job.modal.html',
+              targetEvent: ev,
+            })
+            .then(function(answer) {
+              $scope.alert = 'You said the information was "' + answer + '".';
+              }, function() {
+              $scope.alert = 'You cancelled the dialog.';
+              });
+          };
+          function viewPostJobCtrl($scope, $mdDialog) {
+            $scope.cancel = function() {
+              $mdDialog.cancel();
+            };
+            $scope.hideProg = false;
+            JobService.getUserJob();
+            $timeout(function(){
+              $scope.hideProg = true;
+              console.log(JobService.userJobs)
+              $scope.userJobs = JobService.userJobs;
+            }, 1500);
+        }
   }]);

@@ -8,8 +8,8 @@
       <div layout flex flex-gt-md="35">
         <md-icon flex="10" md-svg-icon="assets/img/icons/ic_sort_24px.svg"></md-icon> &nbsp;
         <md-select flex placeholder="Sort" ng-model="orderProp" style="text-align: center;">
-          <md-option value="created">New</md-option>
-          <md-option value="-created">Old</md-option>
+          <md-option  selected="selected" value="-created">New</md-option>
+          <md-option value="created">Old</md-option>
         </md-select>
       </div>
     </div>
@@ -19,7 +19,7 @@
     <md-content flex style="height: 20%;">
     <md-list flex>
       <md-list-item ng-repeat="job in filteredJobs = (jobs | filter: query | orderBy: orderProp)">
-        <div layout-padding class="md-list-item-text md-whiteframe-z5" style="line-height: 1.5;">
+        <div layout-margin layout-padding class="md-list-item-text md-whiteframe-z5" style="line-height: 1.5; width: 100%;">
           <div>
             <strong>
               <h3 ng-href="#/jobs/{{job._id}}">{{job.title | sentenceCase}}</h3>
