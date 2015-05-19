@@ -25,8 +25,8 @@
               <h3 ng-href="#/jobs/{{job._id}}">{{job.title | sentenceCase}}</h3>
             </strong>
           </div>
-          <div ng-show="job.skills">
-            <strong>Required Skiils:</strong>&nbsp;{{job.skills | truncate:50}}
+          <div ng-show="job.skill">
+            <strong>Required Skills:</strong>&nbsp;{{job.skill | truncate:50}}
           </div>
           <div ng-show="job.tools">
             <strong>Tools:</strong>&nbsp;{{job.tools | truncate:50}}

@@ -10,12 +10,25 @@ angular.module('freelanceApp')
 
     jobObject.getAll = function(){
       return $http.get(baseUrl + "/jobs").success(function(data){
+        console.log(data)
         angular.copy(data, jobObject.jobs);
       });
     };
 
-    jobObject.getSingle = function(params){
-      return $http.get(baseUrl + "/jobs/" + params).then(function(res){
+    jobObject.getSingle = function(slug){
+      return $http.get(baseUrl + "/jobs/" + slug).then(function(res){
+        return res.data;
+      });
+    };
+
+    jobObject.editSingle = function(slug, data){
+      return $http.put(baseUrl + "/jobs/" + slug, data).then(function(res){
+        return res.data;
+      });
+    };
+
+    jobObject.deleteSingle = function(slug){
+      return $http.delete(baseUrl + "/jobs/" + slug).then(function(res){
         return res.data;
       });
     };
@@ -28,7 +41,6 @@ angular.module('freelanceApp')
 
     jobObject.getUserJob = function(){
       return $http.get(baseUrl + "/user/jobs/").then(function(res){
-        console.log(res.data)
        angular.copy(res.data, jobObject.userJobs);
       });
     };
