@@ -10,7 +10,7 @@ angular.module('freelanceApp')
       $scope.editUser = function(ev) {
         $mdDialog.show({
           controller: editUserCtrl,
-          templateUrl: '../app/partials/edit.user.modal.html',
+          templateUrl: 'app/partials/edit.user.modal.html',
           targetEvent: ev,
         })
         .then(function(answer) {
@@ -59,7 +59,7 @@ angular.module('freelanceApp')
       $scope.postJob = function(ev) {
               $mdDialog.show({
                 controller: postJobCtrl,
-                templateUrl: '../app/partials/post.job.modal.html',
+                templateUrl: 'app/partials/post.job.modal.html',
                 targetEvent: ev,
               })
               .then(function(answer) {
@@ -80,17 +80,15 @@ angular.module('freelanceApp')
                     title: $scope.title,
                     description: $scope.description,
                     tools: $scope.tools,
-                    skills: $scope.skills
+                    skill: $scope.skill
                   };
                   $timeout(function() {
                     JobService.postJob(formData)
                       .then(
                         function(data) {
                           $scope.hideProg = true;
-                          // console.log(data)
                          },
                         function(data) {
-                          // console.log(data)
                         $scope.hideProg = true;
                         $scope.msg = data.message;
                       });
@@ -100,7 +98,6 @@ angular.module('freelanceApp')
             }
 
       $scope.deleteUser = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
         var confirm = $mdDialog.confirm()
           .title('Would you like to delete your Account?')
           .content('You will loose all your data if you confirm this. If you clicked this accidentally. Please, click CANCEL to exit')
@@ -123,7 +120,7 @@ angular.module('freelanceApp')
       $scope.viewPostedJobs = function(ev) {
           $mdDialog.show({
               controller: viewPostJobCtrl,
-              templateUrl: '../app/partials/view.post.job.modal.html',
+              templateUrl: 'app/partials/view.post.job.modal.html',
               targetEvent: ev,
             })
             .then(function(answer) {
@@ -137,11 +134,33 @@ angular.module('freelanceApp')
               $mdDialog.cancel();
             };
             $scope.hideProg = false;
+
             JobService.getUserJob();
             $timeout(function(){
               $scope.hideProg = true;
-              console.log(JobService.userJobs)
               $scope.userJobs = JobService.userJobs;
-            }, 1500);
+            }, 2000);
+
+            $scope.viewJob = function(slug){
+              $mdDialog.hide();
+              $location.path('/jobs/' + slug);
+            };
+
+            $scope.editJob = function(slug, job){
+              var def = JobService.editSingle(slug, job);
+              $scope.hideProg = false;
+              $timeout(function(){
+                $scope.hideProg = true;
+                def.then(function(data){
+                  JobService.getUserJob();
+                });
+              }, 2000);
+            };
+
+            $scope.deleteJob = function(slug){
+              JobService.deleteSingle(slug).then(function(data){
+                JobService.getUserJob();
+              });
+            };
         }
   }]);

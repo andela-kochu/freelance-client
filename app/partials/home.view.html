@@ -16,24 +16,25 @@
             <span>Recent Jobs</span>
           </center>
       </md-subheader>
-      <md-input-container class="searchJobs md-accent">
+      <md-input-container class="searchJobs md-accent" style="padding-bottom: 0.5em">
         <label class="label1" style="color: rgba(16, 2, 2, 0.55);">
           <md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Search Jobs
         </label>
         <input name="search" ng-model="query">
       </md-input-container>
       <md-list>
-        <md-list-item class="md-3-line" ng-repeat="job in recentJobs | filter:query | limitTo: 4" >
+        <md-list-item class="md-3-line" ng-repeat="job in recentJobs | filter:query | orderBy: '-created' | limitTo: 4" >
           <div class="md-list-item-text"
                 layout="column" layout-align="center center"
                 layout-align-gt-md='end center'
                 style=" background: rgba(0, 0, 0, 0.04);">
             <a ng-href="#/jobs/{{job.slug}}">
-              <h3 style="color: black;">{{job.title | sentenceCase}}</h3>
+              <h3 style="color: rgba(0, 0, 0, .87); font-weight: 600;">{{job.title | sentenceCase}}</h3>
             </a>
             <h4  style="color: rgb(99, 99, 99);">{{ job.tools | lowercase}}</h4>
             <h4  style="color: rgb(55, 55, 57);">Posted:&nbsp;{{ job.created | date: medium}}</h4>
           </div>
+          <md-divider></md-divider>
         </md-list-item>
       </md-list>
     </div>

@@ -1,11 +1,13 @@
 <md-dialog aria-label="Update Profile">
-    <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
-    <md-subheader class="customsub">
-        <center>My Jobs</center>
-    </md-subheader>
+    <md-toolbar layout class="customsub">
+      <input ng-model="query" flex="30"
+              style="padding: 0 10px; margin:auto; text-align: center; border-radius: 4px; margin-right: 0.5em; "
+              placeholder="Filter Jobs"/>
+    </md-toolbar>
      <md-content>
+    <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
       <md-list flex>
-      <md-list-item flex ng-repeat="job in userJobs | orderBy: orderProp">
+      <md-list-item flex ng-repeat="job in userJobs | orderBy: '-created' | filter: query">
         <md-tabs md-dynamic-height md-selected="selectedIndex" md-border-bottom> <!-- md-dynamic-height md-border-bottom> -->
           <md-tab label="JOB">
             <div layout-padding layout-margin class="md-list-item-text md-whiteframe-z5" style="line-height: 1.5;">
@@ -14,8 +16,8 @@
                   <h3 ng-href="#/jobs/{{job._id}}">{{job.title | sentenceCase}}</h3>
                 </strong>
               </div>
-              <div ng-show="job.skills">
-                <strong>Required Skiils:</strong>&nbsp;{{job.skills | truncate:50}}
+              <div ng-show="job.skill">
+                <strong>Required Skiils:</strong>&nbsp;{{job.skill | truncate:50}}
               </div>
               <div ng-show="job.tools">
                 <strong>Tools:</strong>&nbsp;{{job.tools | truncate:50}}
@@ -35,7 +37,7 @@
                 </div>
               </div>
               <div>
-                <md-button ng-href="#/jobs/{{job.slug}}" flex-md="15" class="md-raised md-primary md-hue-2">
+                <md-button ng-click="viewJob(job.slug)" flex-md="15" class="md-raised md-primary md-hue-2">
                   View Job
                 </md-button>
               </div>
@@ -53,40 +55,41 @@
             </div>
           </md-tab>
           <md-tab label="Edit Job">
-            <form layout-margin name="postJobForm" style="overflow-y: scroll;">
+            <form layout-margin name="postJobForm" style="overflow-y: scroll;" ng-init="getJob(job.slug)">
               <md-input-container  class="md-icon-float" style="margin-top: 0.03em;">
                 <label>Title</label>
                   <!-- <md-icon md-svg-src="assets/img/icons/ic_person_24px.svg" class="name"></md-icon> -->
-                <input name='title' ng-model="title" type="text" ng-required="true" value="{{job.title}}">
+                <input name='title' ng-model="job.title" type="text"  ng-required="true" value="{{job.title}}">
                 <div ng-messages="postJobForm.title.$error">
                   <div ng-message="required">*</div>
                 </div>
-                </md-input-container>
-                <md-input-container >
-                  <label>Description</label>
-                  <!-- <md-icon md-svg-src="assets/img/icons/ic_vpn_key_24px.svg" class="email"></md-icon> -->
-                  <textarea name='description' ng-model="description" min="100" ng-required="true">
+              </md-input-container>
+              <md-input-container>
+                <label>Description</label>
+                <textarea name='description' ng-model="job.description" min="100" ng-required="true">
                   {{job.description}}
-                  </textarea>
-                  <div ng-messages="postJobForm.description.$error">
-                    <div ng-message="required">*</div>
-                  </div>
-                </md-input-container>
-                <md-input-container>
+                </textarea>
+                <div ng-messages="postJobForm.description.$error">
+                  <div ng-message="required">*</div>
+                </div>
+              </md-input-container>
+              <md-input-container>
+                 <label>Tools</label>
                   <!-- <md-icon md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon> -->
-                  <input name="tools" ng-model="tools" type="text" placeholder="Tools" value="{{job.tools}}">
-                </md-input-container>
-                <md-input-container>
+                <input name="tools" ng-model="job.tools" type="text" value="{{job.tools}}">
+              </md-input-container>
+              <md-input-container>
+                 <label>Required Skills</label>
                   <!-- <md-icon md-svg-src="assets/img/icons/ic_flare_24px.svg" style="display:inline-block;"></md-icon> -->
-                  <input ng-model="skiils" type="text" placeholder="Required Skills" value="{{job.skills}}">
-                </md-input-container>
-                <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
-                <div class="md-actions" layout="row" layout-align="center center">
-                  <md-button   flex ng-disabled="postJobForm.$invalid" ng-click="submitJob()"
+                <input ng-model="job.skill" type="text" value="{{job.skill}}">
+              </md-input-container>
+              <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+              <div class="md-actions" layout="row" layout-align="center center">
+                <md-button type="submit" flex ng-disabled="postJobForm.$invalid" ng-click="editJob(job.slug, job)"
                       class="md-raised md-primary md-hue-2">
                       Submit
-                  </md-button>
-                </div>
+                </md-button>
+              </div>
             </form>
           </md-tab>
           <md-tab label="View Applicants">
