@@ -27,6 +27,12 @@ angular.module('freelanceApp')
       });
     };
 
+    jobObject.applyFor = function(slug){
+      return $http.put(baseUrl + "/jobs/" + slug + '/apply').then(function(res){
+        return res.data;
+      });
+    };
+
     jobObject.deleteSingle = function(slug){
       return $http.delete(baseUrl + "/jobs/" + slug).then(function(res){
         return res.data;

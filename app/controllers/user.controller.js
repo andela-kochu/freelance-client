@@ -1,10 +1,14 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .controller('userCtrl', ['$scope', '$location', '$window', 'UserService', 'AuthService',
-    function ($scope, $location, $window, UserService, AuthService) {
+  .controller('userCtrl', ['$scope', '$location', '$window', 'UserService',
+    function ($scope, $location, $window, UserService) {
       $scope.hidemsg = true;
       $scope.hideProg = true;
+      $scope.host = $location.host();
+      $scope.protocol = $location.protocol();
+
+   //   UserService.google();
 
       $scope.logIn = function() {
         $scope.hideProg = false;
@@ -15,14 +19,13 @@ angular.module('freelanceApp')
         UserService.logIn(formData)
           .success(function(data) {
             $scope.hideProg = true;
-            AuthService.isLogged = true;
             $window.sessionStorage.token = data.token;
+            $window.sessionStorage.user = data.user;
             $location.path("/profile");
-          })
+           })
           .error(function(data, status) {
             $scope.hidemsg = false;
             $scope.hideProg = true;
-            console.log(data, status)
             $scope.msg = data.message;
           });
       };
@@ -41,8 +44,8 @@ angular.module('freelanceApp')
           UserService.signUp(formData)
             .success(function(data) {
               $scope.hideProg = true;
-              AuthService.isLogged = true;
               $window.sessionStorage.token = data.token;
+              $window.sessionStorage.user = data.user;
               $location.path("/profile");
             })
             .error(function(data, status) {

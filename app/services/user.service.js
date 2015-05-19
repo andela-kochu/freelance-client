@@ -14,6 +14,10 @@ angular.module('freelanceApp')
       return $http.post(baseUrl + '/users', data);
     };
 
+    user.google = function(data) {
+      return $http.get(baseUrl + '/auth/google');
+    };
+
     user.editProf = function(data) {
       return $http.put(baseUrl + '/users/one', data);
     };

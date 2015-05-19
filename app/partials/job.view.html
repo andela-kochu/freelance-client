@@ -1,5 +1,5 @@
 <md-content layout layout-align="center center" class="first">
-  <md-card flex-gt-md="70" flex>
+  <md-card flex-gt-md="80" flex>
     <div layout-gt-md='row' layout='column'>
       <md-input-container layout-padding flex class="searchJobs md-primary" style="padding-bottom: 0px;">
         <label class="label1"><md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Filter</label>
@@ -19,7 +19,7 @@
     <md-content flex style="height: 20%;">
     <md-list flex>
       <md-list-item ng-repeat="job in filteredJobs = (jobs | filter: query | orderBy: orderProp)">
-        <div layout-margin layout-padding class="md-list-item-text md-whiteframe-z5" style="line-height: 1.5; width: 100%;">
+        <div layout-margin layout-padding class="md-list-item-text md-whiteframe-z2" style="line-height: 1.5; width: 100%;">
           <div>
             <strong>
               <h3 ng-href="#/jobs/{{job._id}}">{{job.title | sentenceCase}}</h3>

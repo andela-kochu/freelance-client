@@ -53,6 +53,16 @@ angular.module('freelanceApp').config([
           templateUrl: 'app/partials/signup.view.html',
           controller: 'userCtrl'
         })
+        .state('postedjobs', {
+          url: '/profile/myjobs',
+          templateUrl: 'app/partials/view.post.job.modal.html',
+          controller: 'myJobsCtrl',
+          resolve: {
+            postJobsPromise: ['JobService', function(JobService){
+              return JobService.getUserJob();
+            }]
+          }
+        })
         .state('profile', {
           url: '/profile',
           templateUrl: 'app/partials/profile.view.html',

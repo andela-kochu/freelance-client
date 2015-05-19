@@ -3,7 +3,7 @@
 }
 
 .landing_image {
-  background: url('../img/job-shake1.png');
+  background: url('../img/job-shake2.png');
   background-size: fit;
   color: #fff;
   margin-top: .3em;
@@ -28,8 +28,7 @@ a {
   height: 3em;
   bottom: 0;
   width: 100%;
-/*  margin-bottom: 0em;
-*/  color: white;
+  color: white;
   line-height: 3em;
 }
 
@@ -150,12 +149,6 @@ a {
   font-weight: bolder !important;
   font-size: 1.2em;
   min-height: 2.5em;
-}
-
-md-dialog .md-actions .md-button:first-child {
-  /*color: black !important;*/
-  /*background-color: red !important;*/
-  /*font-weight: bold;*/
 }
 
 md-dialog .md-actions .md-button:last-child {

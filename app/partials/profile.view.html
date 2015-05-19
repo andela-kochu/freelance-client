@@ -1,6 +1,6 @@
 <md-content class="first">
   <md-card layout="row" layout-sm="column">
-    <div flex  flex-order="2">
+    <div flex  flex-order="1">
       <md-subheader hide-sm class="md-hue-1 customsub">
         <center><span>Settings</span></center>
       </md-subheader>
@@ -20,7 +20,7 @@
           Post a Job
         </md-button>
         <md-button
-                ng-click="viewPostedJobs($event)"
+                ng-href="#/profile/myjobs"
                 title="login"
                 aria-label="login"
                 class="md-primary md-raised md-hue-1">
@@ -75,7 +75,7 @@
           <md-icon  md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon>
           <span>
             &nbsp;
-            {{profile.phoneNumber}}
+            0{{profile.phoneNumber}}
           </span>
         </div>
         <div layout layout-sm="column"

@@ -2,8 +2,8 @@
 
 angular.module('freelanceApp')
   .controller('profileCtrl', ['$scope', '$rootScope', '$location', '$window',
-            'UserService', 'JobService', 'AuthService', '$mdDialog', '$timeout',
-    function ($scope, $rootScope, $location, $window, UserService, JobService, AuthService, $mdDialog, $timeout) {
+            'UserService', 'JobService', '$mdDialog', '$timeout',
+    function ($scope, $rootScope, $location, $window, UserService, JobService, $mdDialog, $timeout) {
 
       $scope.profile = UserService.userData;
 
