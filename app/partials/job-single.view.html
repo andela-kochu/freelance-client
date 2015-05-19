@@ -32,7 +32,7 @@
             <p flex><strong >Author:</strong>&nbsp;{{single_job.author.name | sentenceCase}}</p>
           </div>
           <div layout layout-align='center center'>
-            <md-button  flex="40" ng-click='applyForJob(single_job.slug)' class="md-raised md-primary md-hue-2">Apply</md-button>
+            <md-button  flex="40" ng-click='applyForJob(single_job.slug); apply_single($event)"' class="md-raised md-primary md-hue-2">Apply</md-button>
           </div>
         </div>
       <div class="comments">Comments</div>
