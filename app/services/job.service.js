@@ -35,7 +35,7 @@ angular.module('freelanceApp')
 
     jobObject.postComment = function(comment){
       return $http.post(baseUrl + "/comments", comment).then(function(res){
-        return res.data;
+         angular.copy(res.data, jobObject.singleJob);
       });
     };
 

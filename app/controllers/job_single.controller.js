@@ -17,22 +17,24 @@ angular.module('freelanceApp')
           $scope.hideProg = true;
           ToastService.showToast('You have applied successfully');
         }, 1000);
-        console.log(res);
+  //      console.log(res);
       });
     };
 
 
-    $scope.postComment = function(jobId, comment) {
+    $scope.postComment = function(jobId, comment, slug) {
       if(jobId && comment) {
         comment.jobId = jobId;
       }
       $scope.hideProg = false;
-      JobService.postComment(comment).then(function(data){
-        $scope.hideProg = true;
-        ToastService.showToast('Comment posted successfully');
-        JobService.getSingle();
-        console.log(data);
-      });
+      var def = JobService.postComment(comment);
+       $timeout(function() {
+          $scope.hideProg = true;
+          def.then(function(data){
+            ToastService.showToast('Comment posted successfully');
+            JobService.getSingle(slug);
+           });
+        }, 1000);
+     };
 
-    };
   }]);
