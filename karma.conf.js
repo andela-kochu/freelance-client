@@ -17,6 +17,11 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'libs/angular/angular.js',
+      'libs/angular-animate/angular-animate.min.js',
+      'libs/angular-aria/angular-aria.min.js',
+      'libs/angular-material/angular-material.min.js',
+      'libs/angular-messages/angular-messages.min.js',
+      'libs/ngstorage/ngStorage.js',
       'libs/angular-ui-router/release/angular-ui-router.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'app/**/*.js',

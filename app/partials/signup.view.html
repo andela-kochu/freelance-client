@@ -42,6 +42,9 @@
             <div ng-message="number">Only figures are accepted</div>
           </div>
         </md-input-container>
+        <div class="md-actions" layout="row" layout-align="center center">
+          <md-button ng-disabled="signupForm.$invalid" flex ng-click="signUp()" class="md-raised md-primary md-hue-2">Register</md-button>
+        </div>
       </form>
       <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary">
       </md-progress-linear>
