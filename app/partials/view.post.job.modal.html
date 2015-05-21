@@ -14,12 +14,12 @@
       </div>
     </div>
     <md-subheader class="md-primary customsub" style="background-color: rgb(13, 45, 45) !important;">
-      My Jobs Admin Board
+      My Admin Jobs Board
     </md-subheader>
     <md-content flex style="height: 20%;">
     <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
       <md-list flex>
-      <md-list-item flex ng-repeat="job in userJobs | orderBy: '-created' | filter: query">
+      <md-list-item flex ng-repeat="job in userJobs | orderBy: orderProp | filter: query">
         <md-tabs md-dynamic-height md-selected="selectedIndex" md-border-bottom> <!-- md-dynamic-height md-border-bottom> -->
           <md-tab label="JOB">
             <div layout-padding layout-margin class="md-list-item-text md-whiteframe-z1" style="line-height: 1.5;">
@@ -180,10 +180,10 @@
                           layout-align="center center"
                           class="md-warn"
                           ng-hide="show.length"
-                          style="margin-bottom: 5em;margin-top: 5em; padding: 1em;"
+                          style="margin-bottom: 5em;margin-top: 5em; padding: 1em; background-color: rgb(229, 100, 90);"
                           >
                 No one has applied for:
-                <span style="background-color: rgba(0, 0, 0, 0.71); margin-top: 1em; padding: .5em; border-radius: .5em;">
+                <span style="background-color: rgba(0, 0, 0, 0.32); margin-top: 1em; padding: .5em; border-radius: .5em;">
                   {{job.title | sentenceCase}}
                 </span>
               </md-toolbar>

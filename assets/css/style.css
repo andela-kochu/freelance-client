@@ -87,14 +87,13 @@ a {
 @media (min-width: 960px) {
   .md-avatar {
     border-radius: 90%;
-    border: .1em solid #2E7D32;
-    width: 50%;
-    margin: 1.6em;
+    border: 0.1em solid rgba(57, 106, 100, 0.07);
+    margin: 0.6em;
   }
   md-dialog {
     min-width: 60% !important;
-    padding: 0.2em !important;
-    top: -5.5em !important;
+/*    padding: 0.2em !important;
+*/    top: -5.5em !important;
   }
   .headline {
     margin-top: 22em !important;
@@ -110,7 +109,6 @@ a {
   .md-avatar {
     border-radius: 90%;
     border: 1px solid #2E7D32;
-    width: 50%;
     margin-top: 2em;
   }
   md-dialog {
@@ -153,11 +151,28 @@ a {
 
 md-dialog .md-actions .md-button:last-child {
   color: black !important;
-  /*background-color: red !important;*/
-  /*font-weight: bold;*/
 }
 
 md-tabs {
   width: 100% !important;
 }
 
+md-grid-tile-footer, md-grid-tile-header {
+  /*background-color: rgba(0, 105, 92, 1) !important;*/
+  background-color: black !important;
+}
+
+md-grid-tile {
+  transition: all 400ms ease-out 50ms;
+}
+
+.profile {
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  padding-top: 3em;
+  padding-left: 3em;
+  line-height: 3em;
+  font-size: larger;
+}
+}
