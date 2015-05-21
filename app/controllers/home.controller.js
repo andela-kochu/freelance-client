@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .controller('homeCtrl', ['$scope', '$rootScope','sideNav','AuthService', 'JobService',
-              '$location', '$localStorage', '$window', '$timeout', function($scope, $rootScope, sideNav,
-               AuthService, JobService, $location,  $localStorage, $window, $timeout) {
+  .controller('homeCtrl', ['$scope', '$rootScope', 'sideNav','AuthService', 'JobService',
+              '$location', '$localStorage', '$window', '$timeout', 'ToastService', function($scope, $rootScope, sideNav,
+               AuthService, JobService, $location,  $localStorage, $window, $timeout, ToastService) {
 
     $scope.close = sideNav.close;
     $scope.toggle = sideNav.buildToggler;
     $scope.recentJobs = JobService.jobs;
 
-    $scope.$on("$locationChangeStart", function(event) {
+    $rootScope.$on("$stateChangeSuccess", function(event) {
       if($window.sessionStorage.token) {
         $scope.isLogged = true;
         $scope.username = $window.sessionStorage.user.split(' ')[1];
@@ -25,7 +25,9 @@ angular.module('freelanceApp')
       $window.sessionStorage.clear();
       $timeout(function(){
         $rootScope.hideOutProg = true;
+        ToastService.showToast('You have been logged out!');
         $location.url("/signin");
       }, 1500);
     };
   }]);
+

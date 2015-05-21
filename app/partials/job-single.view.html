@@ -5,6 +5,7 @@
           <strong>{{single_job.title | sentenceCase}}</strong>
         </center>
       </md-subheader>
+      {{single_job}}
       <div layout-margin layout-padding class="md-list-item-text" style="padding: 10px; line-height: 2;">
           <div ng-show="single_job.skills">
             <strong layout layout-align='center center'>Required Skiils</strong>{{single_job.skills}}
@@ -32,26 +33,28 @@
             <p flex><strong >Author:</strong>&nbsp;{{single_job.author.name | sentenceCase}}</p>
           </div>
           <div layout layout-align='center center'>
-            <md-button  flex="40" ng-click='applyForJob(single_job.slug); apply_single($event)"' class="md-raised md-primary md-hue-2">Apply</md-button>
+            <md-button  flex="40" ng-click='applyForJob(single_job.slug);' class="md-raised md-primary md-hue-2">Apply</md-button>
           </div>
         </div>
+      <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary">
+      </md-progress-linear>
       <div class="comments">Comments</div>
-      <md-content layout-padding>
-        <strong>Title</strong>
-        <md-input-container layout-padding layout="row" layout-sm="column">
-          <input ng-model="user.title">
-        </md-input-container>
-        <div style="padding: 3px;">
-          <div>
-            <strong>Content</strong>
-            <md-input-container>
-              <textarea ng-model="user.email"></textarea>
+        <form>
+          <div style="padding: 3px;">
+            <md-input-container >
+            <label>Title</label>
+              <input ng-model="comment.title">
             </md-input-container>
           </div>
-        </div>
-        <div layout layout-align='start center'>
-            <md-button flex="30" class="md-raised md-accent md-hue-3 submitcomments">Submit</md-button>
-        </div>
-      </md-content>
+          <div style="padding: 3px;">
+            <md-input-container style="padding-bottom: 0;">
+            <label>Content</label>
+              <textarea ng-model="comment.content"></textarea>
+            </md-input-container>
+          </div>
+          <div layout layout-align='start center'>
+            <md-button type='submit' flex="30" ng-click="postComment(single_job._id, comment)" class="md-raised md-accent md-hue-3 submitcomments">Submit</md-button>
+          </div>
+        </form>
    </md-card>
 </md-content>

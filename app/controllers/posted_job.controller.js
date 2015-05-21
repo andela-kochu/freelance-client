@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .controller('myJobsCtrl', ['$scope', '$rootScope', '$location', '$window', 'JobService', '$timeout',
-    function ($scope, $rootScope, $location, $window, JobService, $timeout) {
+  .controller('myJobsCtrl', ['$scope', '$rootScope', '$location', '$window', 'JobService', '$timeout', 'ToastService',
+    function ($scope, $rootScope, $location, $window, JobService, $timeout, ToastService) {
 
         $scope.hideProg = false;
 
@@ -22,12 +22,14 @@ angular.module('freelanceApp')
             $scope.hideProg = true;
             def.then(function(data){
               JobService.getUserJob();
+              ToastService.showToast('Job edited successfully');
             });
           }, 2000);
         };
 
         $scope.deleteJob = function(slug){
           JobService.deleteSingle(slug).then(function(data){
+            ToastService.showToast('Job deleted successfully');
             JobService.getUserJob();
           });
         };

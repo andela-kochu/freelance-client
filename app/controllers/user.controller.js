@@ -1,14 +1,10 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .controller('userCtrl', ['$scope', '$location', '$window', 'UserService',
-    function ($scope, $location, $window, UserService) {
+  .controller('userCtrl', ['$scope', '$location', '$window', 'UserService', 'ToastService',
+    function ($scope, $location, $window, UserService, ToastService) {
       $scope.hidemsg = true;
       $scope.hideProg = true;
-      $scope.host = $location.host();
-      $scope.protocol = $location.protocol();
-
-   //   UserService.google();
 
       $scope.logIn = function() {
         $scope.hideProg = false;
@@ -17,16 +13,18 @@ angular.module('freelanceApp')
                 password: $scope.password
             };
         UserService.logIn(formData)
-          .success(function(data) {
+          .then(function(res) {
             $scope.hideProg = true;
-            $window.sessionStorage.token = data.token;
-            $window.sessionStorage.user = data.user;
+            $window.sessionStorage.token = res.data.token;
+            $window.sessionStorage.user = res.data.user;
             $location.path("/profile");
-           })
-          .error(function(data, status) {
+           },
+            function(res) {
             $scope.hidemsg = false;
             $scope.hideProg = true;
-            $scope.msg = data.message;
+            ToastService.showToast('Error occured');
+            console.log(res.data)
+            $scope.msg = res.data.message;
           });
       };
 
@@ -38,7 +36,7 @@ angular.module('freelanceApp')
                 password: $scope.password,
                 phoneNumber: $scope.phone,
                 interests: $scope.interests,
-                skills: $scope.skills,
+                skill: $scope.skills,
                 gender: $scope.gender
               };
           UserService.signUp(formData)

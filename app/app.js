@@ -69,32 +69,39 @@ angular.module('freelanceApp').config([
           controller: 'profileCtrl',
           resolve: {
             profilePromise: ['UserService', function(UserService){
-              return UserService.profile();
+              UserService.profile();
             }]
           }
         });
     $urlRouterProvider.otherwise('home');
 
-    $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$window', function($q, $location, $localStorage, $window) {
+    $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$window', '$timeout', '$rootScope',
+          function($q, $location, $localStorage, $window, $timeout, $rootScope) {
             return {
                 'request': function (config) {
-                    // config.headers = config.headers || {};
-                    if ($window.sessionStorage.token) {
-                        config.headers.Authorization = $window.sessionStorage.token;
+                    var querytoken = $location.search().token;
+                    var queryUser = $location.search().user;
+                    $location.search('token', null);
+                    $location.search('user', null);
+                    if(!$window.sessionStorage.token && querytoken){
+                        $window.sessionStorage.token = querytoken;
+                        $window.sessionStorage.user = queryUser;
+                    }
+                    if ($window.sessionStorage.token ||  querytoken) {
+                        config.headers.Authorization = $window.sessionStorage.token || querytoken;
                     }
                     return config;
                 },
 
                 // optional method
                 'response': function(response) {
-                  // do something on success
-                  // console.log(response)
                   return response;
                 },
 
                 'requestError': function(rejection) {
-                        console.log('request error')
-                    if(rejection.status === 400 || rejection.status === 401 || rejection.status === 403) {
+                        console.log('request error');
+                    if(rejection.status === 401 || rejection.status === 403) {
+                      // ToastService.showToast('You have to signin/Signup first');
                       $window.location.href = '#/signin';
                     }
                     return $q.reject(rejection);
