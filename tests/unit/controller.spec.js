@@ -1,100 +1,149 @@
 'use strict';
 
 describe('Freelance App Contrl', function(){
-  var homeScope, jobScope, jobSingleScope, myJobsScope, homeCtrl, jobCtrl, job_singleCtrl, myJobsCtrl, profileCtrl, userCtrl;
+  var homeScope, jobScope, jobSingleScope, myJobsScope, profileScope, userScope, homeCtrl, jobCtrl, job_singleCtrl, myJobsCtrl, profileCtrl, userCtrl;
   beforeEach(module('freelanceApp'));
 
-  beforeEach(inject(function($controller, $rootScope, _$httpBackend_, $http){
-    $httpBackend = _$httpBackend_;
+  beforeEach(inject(function($controller, $rootScope){
     homeScope = $rootScope.$new();
     homeCtrl = $controller('homeCtrl', {
       $scope: homeScope
     });
     jobScope = $rootScope.$new();
-    homeCtrl = $controller('jobCtrl', {
+    jobCtrl = $controller('jobCtrl', {
       $scope: jobScope
     });
     jobSingleScope = $rootScope.$new();
-      job_singleCtrl = $controller('job_singleCtrl', {
-        $scope: jobSingleScope
+    job_singleCtrl = $controller('job_singleCtrl', {
+      $scope: jobSingleScope
     });
     myJobsScope = $rootScope.$new();
-      myJobsCtrl = $controller('myJobsCtrl', {
-        $scope: scope
+    myJobsCtrl = $controller('myJobsCtrl', {
+      $scope: myJobsScope
     });
-    homeScope = $rootScope.$new();
-      homeCtrl = $controller('homeCtrl', {
-        $scope: scope
+    profileScope = $rootScope.$new();
+    profileCtrl = $controller('profileCtrl', {
+      $scope: profileScope
     });
-    homeScope = $rootScope.$new();
-      homeCtrl = $controller('homeCtrl', {
-        $scope: scope
-      });
-
+    userScope = $rootScope.$new();
+    userCtrl = $controller('userCtrl', {
+      $scope: userScope
+    });
   }));
 
-  it('should be defined', function() {
-    expect(controller).toBeDefined();
-  });
+    it('Controllers should be defined', function() {
+      expect(homeCtrl).toBeDefined();
+      expect(jobCtrl).toBeDefined();
+      expect(job_singleCtrl).toBeDefined();
+      expect(myJobsCtrl).toBeDefined();
+      expect(profileCtrl).toBeDefined();
+      expect(userCtrl).toBeDefined();
+    });
+
+    describe('Home Ctrl', function(){
+      it('should have navigation close', function(){
+        var type = typeof homeScope.close;
+        expect(type).toBe('function');
+      });
+
+      it('should have navigation toggle', function(){
+        expect(homeScope.toggle).toBeDefined();
+      });
+
+      it('should have navigation toggle', function(){
+        expect(homeScope.toggle).toBeDefined();
+      });
+
+      it('should have recent jobs of type array', function(){
+        var type = typeof homeScope.recentJobs;
+        expect(type).toBe('object');
+      });
+
+      it('should have recent jobs of type array', function(){
+        var type = typeof homeScope.logout;
+        expect(type).toBe('function');
+      });
+    });
+
+    describe('Job Ctrl', function(){
+      it('should have jobs of type array', function(){
+         var type = typeof jobScope.jobs;
+        expect(type).toBe('object');
+      });
+    });
+
+    describe(' Single Job Ctrl', function(){
+      it('should have jobs of type array', function(){
+         var type = typeof jobSingleScope.single_job;
+        expect(type).toBe('object');
+      });
+     it('should have apply for jobs of type function', function(){
+        var type = typeof jobSingleScope.applyForJob;
+        expect(type).toBe('function');
+      });
+      it('should have postComment of type function', function(){
+        var type = typeof jobSingleScope.postComment;
+        expect(type).toBe('function');
+      });
+      it('should expect hideProg to true', function(){
+        expect(jobSingleScope.hideProg).toBe(true);
+      });
+    });
+
+    describe('Posted Jobs Ctrl', function(){
+      it('should have jobs of type array', function(){
+         var type = typeof myJobsScope.userJobs;
+        expect(type).toBe('object');
+      });
+     it('should have view jobs of type function', function(){
+        var type = typeof myJobsScope.viewJob;
+        expect(type).toBe('function');
+      });
+      it('should have deleteJob of type function', function(){
+        var type = typeof myJobsScope.deleteJob;
+        expect(type).toBe('function');
+      });
+      it('should expect hideProg to true', function(){
+        expect(jobSingleScope.hideProg).toBe(true);
+      });
+    });
+
+    describe('Profile Ctrl', function(){
+      it('should have user profile of type array', function(){
+         var type = typeof profileScope.profile;
+        expect(type).toBe('object');
+      });
+     it('should have edit User of type function', function(){
+        var type = typeof profileScope.editUser;
+        expect(type).toBe('function');
+      });
+      it('should have PostJob of type function', function(){
+        var type = typeof profileScope.postJob;
+        expect(type).toBe('function');
+      });
+      it('should have DeleteUser of type function', function(){
+        var type = typeof profileScope.deleteUser;
+        expect(type).toBe('function');
+      });
+    });
+
+     describe('User Ctrl', function(){
+     it('should have signUp of type function', function(){
+        var type = typeof userScope.signUp;
+        expect(type).toBe('function');
+      });
+      it('should have Login of type function', function(){
+        var type = typeof userScope.logIn;
+        expect(type).toBe('function');
+      });
+      it('should expect hideProg to true', function(){
+        expect(userScope.hideProg).toBe(true);
+      });
+      it('should expect hidemsg to true', function(){
+        expect(userScope.hidemsg).toBe(true);
+      });
+
+    });
 });
 
 
-/*'use strict';
-
-describe('Enroll App', function(){
-  var AdminScope, LoginScope, StudentScope;
-  var http, $httpBackend, service;
-  var AdminCtrl, LoginCtrl, StudentCtrl;
-  beforeEach(function(){
-    module('Enroll');
-    inject(function($controller, $rootScope, _$httpBackend_, $http, ApiService){
-      service = ApiService;
-      $httpBackend = _$httpBackend_;
-      AdminScope = $rootScope.$new();
-      LoginScope = $rootScope.$new();
-      StudentScope = $rootScope.$new();
-      AdminCtrl = $controller('AdminCtrl', {$scope:AdminScope, $http: http});
-      LoginCtrl = $controller('LoginCtrl', {$scope:LoginScope, $http: http});
-      StudentCtrl = $controller('StudentCtrl', {$scope:StudentScope, $http: http});
-    });
-  });
-
-  it('Controllers should be defined...', function(){
-    expect(AdminCtrl).toBeDefined();
-    expect(LoginCtrl).toBeDefined();
-    expect(StudentCtrl).toBeDefined();
-    expect(AdminScope).toBeDefined();
-    expect(LoginScope).toBeDefined();
-    expect(StudentScope).toBeDefined();
-  });
-
-  describe('Admin Ctrl', function(){
-    it('should load user profile', function(){
-      expect(AdminScope.loadProfile).toBeDefined();
-    });
-
-    it('should remove user profile', function(){
-      expect(AdminScope.removeUser).toBeDefined();
-    });
-  });
-
-  describe('Api Service', function(){
-    it('should be defined', function(){
-     expect(service.getStudents()).toBeDefined();
-    });
-
-    it('should successfully make http GET students request', function(){
-      var students;
-      $httpBackend.whenGET("/api/v1/students").respond([{
-        id: 1,
-        name: "john"
-      }]);
-      service.getStudents().then(function(res){
-        students = res;
-        $httpBackend.flush();
-        expect(students instanceof Array).toBeTruthy();
-      });
-    });
-  });
-
-});*/

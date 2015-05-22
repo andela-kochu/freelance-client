@@ -1,7 +1,7 @@
 angular.module('freelanceApp')
   .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-      .primaryPalette('teal')
+      .primaryPalette('blue')
       .accentPalette('cyan')
       .warnPalette('red');
 });

@@ -1,33 +1,27 @@
 <md-content class="md-accent container first">
-  <div layout="row" layout-sm="column" class="landing_image md-whiteframe-z5">
-    <div flex-gt-md='70' flex layout-margin>
-      <div class='headline'>
-        <h1 class='md-display-1' layout-align="center center">
-          <center>Great teams are built with great teamwork</center>
-        </h1>
-        <h3 class="md-subhead descript" hide-sm>
-          <center>Freelance Job Management System brings the <em>right</em> developers with the <em>right</em> skillset and attitude to your doorsteps</center>
-        </h3>
-      </div>
+  <div layout="row" class="landing_image">
+    <div flex class='headline'>
+      <h1 class='md-display-1' layout-align="center center">
+        <center>Great teams are built with great teamwork</center>
+      </h1>
+      <h3 class="md-subhead descript" hide-sm>
+        <center>Freelance Job Management System brings the <em>right</em> developers with the <em>right</em> skillset and attitude to your doorsteps</center>
+      </h3>
     </div>
-    <div flex layout-margin class="latest">
+  </div>
+  <div layout layout-align="center center" class="latest">
+    <md-card  layout-margin flex flex-gt-sm="50" style="margin: 2em;">
       <md-subheader class="customsub">
           <center>
             <span>Recent Jobs</span>
           </center>
       </md-subheader>
-      <md-input-container class="searchJobs md-accent" style="padding-bottom: 0.5em">
-        <label class="label1" style="color: rgba(16, 2, 2, 0.55);">
-          <md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Search Jobs
-        </label>
-        <input name="search" ng-model="query">
-      </md-input-container>
       <md-list>
-        <md-list-item class="md-3-line" ng-repeat="job in recentJobs | filter:query | orderBy: '-created' | limitTo: 4" >
+        <md-list-item class="md-3-line" ng-repeat="job in recentJobs | filter:query | orderBy: '-created' | limitTo: 3" >
           <div class="md-list-item-text"
                 layout="column" layout-align="center center"
                 layout-align-gt-md='end center'
-                style=" background: rgba(0, 0, 0, 0.04);">
+                style=" background: rgba(0, 0, 0, 0.01);">
             <a ng-href="#/jobs/{{job.slug}}">
               <h3 style="color: rgba(0, 0, 0, .87); font-weight: 600;">{{job.title | sentenceCase}}</h3>
             </a>
@@ -37,19 +31,14 @@
           <md-divider></md-divider>
         </md-list-item>
       </md-list>
-    </div>
+    </md-card>
   </div>
-  <div layout layout-margin>
-    <div flex-gt-md='70' flex>
-      <md-content layout-padding style="height: 100%;padding: 24px;">
-        <h1 class="md-headline">How Freelance App works</h1>
-        <p class="description">
-         Post any project you need done and receive bids from our talented freelancers within minutes. Compare their proposals and price, then select the best freelancer to complete your project. Easy!
-        </p>
-      </md-content>
-    </div>
-    <div flex hide-sm>
-      <center><img ng-src="assets/img/search2.png"  height="150" class="md-card-image" alt="Washed Out"></center>
-    </div>
+  <div layout>
+    <md-content layout-padding style="height: 100%;padding: 24px;">
+      <h1 layout layout-align="center center" class="md-headline">How Freelance App works</h1>
+      <p  layout layout-align="center center" class="description">
+       Post any project you need done and receive bids from our talented freelancers within minutes. Compare their proposals and price, then select the best freelancer to complete your project. Easy!
+      </p>
+    </md-content>
   </div>
 </md-content>
