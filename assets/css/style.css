@@ -99,8 +99,7 @@ a {
   }
   md-dialog {
     min-width: 60% !important;
-/*    padding: 0.2em !important;
-*/    top: -5.5em !important;
+    top: -5.5em !important;
   }
   .headline {
     margin-top: 22em !important;
@@ -123,7 +122,6 @@ a {
   }
   .headline {
     margin-top: 3em !important;
-    margin-bottom: 3em !important;
     background-color: rgba(0, 0, 0, 0.46) !important;
     padding: 1em !important;
   }
