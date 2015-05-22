@@ -3,14 +3,14 @@
 }
 
 .landing_image {
-  background: url('../img/job-shake2.png');
-  background-size: fit;
+  background: url('http://i.huffpost.com/gen/1795420/images/o-JOB-INTERVIEW-facebook.jpg');
+  background-size: cover;
   color: #fff;
-  margin-top: .3em;
+  background-repeat: repeat-x;
 }
 
 .descript {
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.80);
   margin-top: 2em !important;
 }
 
@@ -44,6 +44,9 @@ a {
   line-height: 2em;
 }
 
+.latest {
+  background-color: rgba(246, 246, 246, 0.92);
+}
 .facebook {
   background-color: #3B579D !important;
   color: white !important;
@@ -80,7 +83,7 @@ a {
 }
 
 .description {
-  text-align: justify !important;
+  text-align: center !important;
 }
 
 
@@ -97,11 +100,9 @@ a {
   }
   .headline {
     margin-top: 22em !important;
-    background-color: rgba(0, 0, 0, 0.74) !important;
+    background-color: rgba(0, 0, 0, 0.46) !important;
     padding: 1em !important;
-  }
-  .latest {
-    background-color: rgba(255, 255, 255, 0.92);
+    margin-bottom: .5em;
   }
 }
 
@@ -119,11 +120,8 @@ a {
   .headline {
     margin-top: 3em !important;
     margin-bottom: 3em !important;
-    background-color: rgba(0, 0, 0, 0.74) !important;
+    background-color: rgba(0, 0, 0, 0.46) !important;
     padding: 1em !important;
-  }
-  .latest {
-    background-color: rgba(255, 255, 255, 0.99);
   }
 }
 
@@ -141,7 +139,7 @@ a {
 }
 
 .customsub {
-  background: rgb(57, 106, 100) !important;
+  background: rgb(95, 131, 128) !important;
   margin: 0px !important;
   color: white !important;
   font-weight: bolder !important;

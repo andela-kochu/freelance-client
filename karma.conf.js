@@ -21,9 +21,9 @@ module.exports = function(config) {
       'libs/angular-aria/angular-aria.min.js',
       'libs/angular-material/angular-material.min.js',
       'libs/angular-messages/angular-messages.min.js',
+      'node_modules/angular-mocks/angular-mocks.js',
       'libs/ngstorage/ngStorage.js',
       'libs/angular-ui-router/release/angular-ui-router.js',
-      'node_modules/angular-mocks/angular-mocks.js',
       'app/**/*.js',
       'tests/unit/*.js'
     ],

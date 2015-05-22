@@ -7,7 +7,7 @@ angular.module('freelanceApp')
 
       $scope.profile = UserService.userData;
 
-      ToastService.showToast('Loggin successful');
+      ToastService.showToast('My Profile');
 
       $scope.editUser = function(ev) {
         $mdDialog.show({
