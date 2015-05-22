@@ -83,6 +83,10 @@ a {
 }
 
 .description {
+  text-align: justify; !important;
+}
+
+.descriptionHome {
   text-align: center !important;
 }
 
@@ -139,7 +143,7 @@ a {
 }
 
 .customsub {
-  background: rgb(95, 131, 128) !important;
+  background: rgb(94, 135, 139) !important;
   margin: 0px !important;
   color: white !important;
   font-weight: bolder !important;
