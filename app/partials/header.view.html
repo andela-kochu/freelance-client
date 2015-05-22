@@ -13,47 +13,52 @@
     <h2 flex hide-sm ng-show="isLogged">
       Welcome {{username}}!
     </h2>
-    &nbsp;
-    <md-button hide-sm ng-href="#/jobs"
+    <a hide-sm ng-href="#/jobs"
                title="jobs"
                aria-label="jobs"
                class="md-primary md-raised md-hue-1">
-      JOBS
-    </md-button>
+      Jobs
+    </a>
     &nbsp;
-    <md-button hide-sm ng-href="#/signin"
-             title="login"
-             ng-hide="isLogged"
-             aria-label="login"
-             class="md-primary md-raised md-hue-1">
-      SIGN IN
-    </md-button>
     &nbsp;
-    <md-button hide-sm ng-href="#/signup"
-             title="login"
-             ng-hide="isLogged"
-             aria-label="login"
-             class="md-primary md-raised md-hue-1">
-      SIGN UP
-    </md-button>
-    <md-button hide-sm ng-href="#/profile"
+    <a hide-sm ng-href="#/profile"
              title="profile"
              ng-show="isLogged"
              aria-label="profile"
              class="md-primary md-raised md-hue-1">
-      PROFILE
-    </md-button>
-    <md-button hide-sm
+      Profile
+    </a>
+    &nbsp;
+    &nbsp;
+    <a hide-sm
              title="login"
              ng-show="isLogged"
              ng-click="logout()"
              aria-label="login"
              class="md-primary md-raised md-hue-1">
-      LOG OUT
-    </md-button>
-     <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggle()">
+      Log Out
+    </a>
+    <a hide-sm ng-href="#/signin"
+             title="login"
+             ng-hide="isLogged"
+             aria-label="login"
+             class="md-primary md-raised md-hue-1">
+      Sign In
+    </a>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <a hide-sm ng-href="#/signup"
+             title="login"
+             ng-hide="isLogged"
+             aria-label="login"
+             class="md-primary md-raised md-hue-1">
+      Sign Up
+    </a>
+     <a hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggle()">
       <md-icon md-svg-icon="assets/img/icons/menu.svg"></md-icon>
-    </md-button>
+    </a>
   </div>
 </md-toolbar>
 <md-sidenav  class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
