@@ -12,7 +12,10 @@ angular.module('freelanceApp')
     $rootScope.$on("$stateChangeSuccess", function(event) {
       if($window.sessionStorage.token) {
         $scope.isLogged = true;
-        $scope.username = $window.sessionStorage.user.split(' ')[1];
+        $scope.username = $window.sessionStorage.user.split(' ')[0];
+        if($window.sessionStorage.admin) {
+          $scope.admin = true;
+        }
       }
       else {
         $scope.isLogged = false;
@@ -23,6 +26,7 @@ angular.module('freelanceApp')
     $scope.logout = function() {
       $rootScope.hideOutProg = false;
       $window.sessionStorage.clear();
+      $scope.admin = false;
       $timeout(function(){
         $rootScope.hideOutProg = true;
         ToastService.showToast('You have been logged out!');

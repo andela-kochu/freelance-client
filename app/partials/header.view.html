@@ -23,10 +23,17 @@
     &nbsp;
     <a hide-sm ng-href="#/profile"
              title="profile"
-             ng-show="isLogged"
+             ng-show="(isLogged && !admin)"
              aria-label="profile"
              class="md-primary md-raised md-hue-1">
       Profile
+    </a>
+    <a hide-sm ng-href="#/admin-profile"
+             title="profile"
+              ng-show="(isLogged && admin)"
+              aria-label="profile"
+             class="md-primary md-raised md-hue-1">
+     Admin Profile
     </a>
     &nbsp;
     &nbsp;
@@ -92,11 +99,20 @@
      <md-button
              ng-href="#/profile"
              ng-click="close()"
-             ng-show="isLogged"
+             ng-show="isLogged && !admin"
              title="profile"
              aria-label="profile"
              class="md-primary  md-hue-1">
      PROFILE
+    </md-button>
+    <md-button
+             ng-href="#/profile"
+             ng-click="close()"
+             ng-show="(isLogged && admin)"
+             title="profile"
+             aria-label="profile"
+             class="md-primary  md-hue-1">
+     ADMIN PROFILE
     </md-button>
     <md-button
              ng-click="logout(); close()"

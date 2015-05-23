@@ -14,12 +14,12 @@
       </div>
     </div>
     <md-subheader class="md-primary customsub" style="background-color: rgb(13, 45, 45) !important;">
-      My Admin Jobs Board
+      My Jobs Board
     </md-subheader>
     <md-content flex style="height: 20%;">
     <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
       <md-list flex>
-      <md-list-item flex ng-repeat="job in userJobs | orderBy: orderProp | filter: query">
+      <md-list-item flex ng-repeat="job in myjobs = (userJobs | orderBy: orderProp | filter: query)">
         <md-tabs md-dynamic-height md-selected="selectedIndex" md-border-bottom> <!-- md-dynamic-height md-border-bottom> -->
           <md-tab label="JOB">
             <div layout-padding layout-margin class="md-list-item-text md-whiteframe-z1" style="line-height: 1.5;">
@@ -107,8 +107,6 @@
             </md-progress-linear>
             <md-list flex>
               <md-list-item layout="column" flex ng-repeat="applicant in  show = (job.applicants | filter: query)">
-                  </div> -->
-                  <md-divider></md-divider>
                   <div layout layout-align="center center"
                       layout-margin class="md-headline"
                       >
@@ -187,5 +185,12 @@
       </md-list-item>
       </md-list>
     </md-content>
+    <div layout  layout-margin layout-align="center center" ng-hide="myjobs.length">
+      <md-toolbar flex="50"class="md-warn">
+        <div layout layout-align="center center" class="md-toolbar-tools">
+           No Job Found
+        </div>
+      </md-toolbar>
+    </div>
   </md-card>
 </md-content>

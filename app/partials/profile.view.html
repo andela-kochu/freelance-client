@@ -115,6 +115,13 @@
             View Posted Jobs
           </md-button>
           <md-button
+                  ng-href="#/profile/jobs/applied"
+                  title="login"
+                  aria-label="login"
+                  class="md-primary md-raised md-hue-1">
+            View Applied Jobs
+          </md-button>
+          <md-button
                   ng-click="deleteUser($event)"
                   title="login"
                   aria-label="login"
@@ -122,9 +129,6 @@
             Delete Account
           </md-button>
         </md-content>
-        <md-grid-tile-footer>
-          <h3>Settings</h3>
-        </md-grid-tile-footer>
       </md-grid-tile>
     </md-grid-list>
     </md-card>

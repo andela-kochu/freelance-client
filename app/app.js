@@ -68,13 +68,33 @@ angular.module('freelanceApp').config([
             }]
           }
         })
+        .state('appliedJobs', {
+          url: '/profile/jobs/applied',
+          templateUrl: 'app/partials/view.applied.job.html',
+          controller: 'appliedCtrl',
+          resolve: {
+            postJobsPromise: ['UserService', function(UserService){
+              return UserService.profile();
+            }]
+          }
+        })
         .state('allpostedjobs', {
-          url: '/profile/alljobs',
+          url: '/admin-profile/all-jobs',
           templateUrl: 'app/partials/admin.view.post.job.html',
-          controller: 'myJobsCtrl',
+          controller: 'allJobsCtrl',
           resolve: {
             postJobsPromise: ['JobService', function(JobService){
-              return JobService.getUserJob();
+              return JobService.getAll();
+            }]
+          }
+        })
+        .state('allUsers', {
+          url: '/admin-profile/all-users',
+          templateUrl: 'app/partials/admin.view.users.html',
+          controller: 'allUsersCtrl',
+          resolve: {
+            postJobsPromise: ['UserService', function(UserService){
+              return UserService.getAll();
             }]
           }
         })
@@ -84,7 +104,7 @@ angular.module('freelanceApp').config([
           controller: 'profileCtrl',
           resolve: {
             profilePromise: ['UserService', function(UserService){
-              UserService.profile();
+              return UserService.profile();
             }]
           }
         })
@@ -94,7 +114,7 @@ angular.module('freelanceApp').config([
           controller:'adminProfileCtrl',
           resolve: {
             profilePromise: ['UserService', function(UserService){
-              UserService.profile();
+              return UserService.profile();
             }]
           }
         });
