@@ -8,9 +8,9 @@
           md-gutter="12px" md-gutter-gt-sm="8px" >
       <md-grid-tile class="gray"
           md-rowspan="2" md-colspan="2" md-colspan-sm="1">
-        <md-content class="md-whiteframe-z2 profile" layout="column">
+        <md-content class="md-whiteframe-z1 profile" layout="column">
            <md-grid-tile-header class="profile-disp">
-            <h3>Profile</h3>
+            <h3>Admin Profile</h3>
           </md-grid-tile-header>
           <div layout layout-align="center center" layout-margin class="md-display-1">
             <strong>
@@ -75,9 +75,6 @@
             </span>
           </div>
         </md-content>
-        <md-grid-tile-footer>
-          <h3>User Info</h3>
-        </md-grid-tile-footer>
       </md-grid-tile>
       <md-grid-tile class="yellow">
         <md-grid-tile-header>
@@ -102,31 +99,20 @@
           </md-button>
           <md-button
                   ng-click="postJob($event)"
-                  title="login"
-                  aria-label="login"
                   class="md-primary md-raised md-hue-1">
             Post a Job
           </md-button>
           <md-button
-                  ng-href="#/profile/myjobs"
+                  ng-href="#/admin-profile/all-jobs"
+                  class="md-primary md-raised md-hue-1">
+            View All Posted Jobs
+          </md-button>
+          <md-button
+                  ng-href="#/admin-profile/all-users"
                   title="login"
                   aria-label="login"
                   class="md-primary md-raised md-hue-1">
-            View Posted Jobs
-          </md-button>
-          <md-button
-                  ng-href="#/profile/jobs/applied"
-                  title="login"
-                  aria-label="login"
-                  class="md-primary md-raised md-hue-1">
-            View Applied Jobs
-          </md-button>
-          <md-button
-                  ng-click="deleteUser($event)"
-                  title="login"
-                  aria-label="login"
-                  class="md-warn md-raised md-hue-1">
-            Delete Account
+            View all Users
           </md-button>
         </md-content>
       </md-grid-tile>

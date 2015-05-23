@@ -25,11 +25,11 @@ a {
 .footer {
   position: fixed;
   background-color:  black;
-  height: 3em;
+  height: 2em;
   bottom: 0;
   width: 100%;
   color: white;
-  line-height: 3em;
+  line-height: 2em;
 }
 
 .footer a {
@@ -83,6 +83,10 @@ a {
 }
 
 .description {
+  text-align: justify; !important;
+}
+
+.descriptionHome {
   text-align: center !important;
 }
 
@@ -95,11 +99,10 @@ a {
   }
   md-dialog {
     min-width: 60% !important;
-/*    padding: 0.2em !important;
-*/    top: -5.5em !important;
+    top: -5.5em !important;
   }
   .headline {
-    margin-top: 22em !important;
+    margin-top: 28em !important;
     background-color: rgba(0, 0, 0, 0.46) !important;
     padding: 1em !important;
     margin-bottom: .5em;
@@ -119,16 +122,15 @@ a {
   }
   .headline {
     margin-top: 3em !important;
-    margin-bottom: 3em !important;
     background-color: rgba(0, 0, 0, 0.46) !important;
-    padding: 1em !important;
+    padding: .5em !important;
   }
 }
 
 .mainBar {
   position: fixed;
   background-color:  black;
-  height: 3em;
+  height: 2em;
   top: 0;
   width: 100%;
 }
@@ -139,7 +141,7 @@ a {
 }
 
 .customsub {
-  background: rgb(95, 131, 128) !important;
+  background: rgb(94, 135, 139) !important;
   margin: 0px !important;
   color: white !important;
   font-weight: bolder !important;

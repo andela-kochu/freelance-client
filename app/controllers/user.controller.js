@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .controller('userCtrl', ['$scope', '$location', '$window', 'UserService', 'ToastService',
-    function ($scope, $location, $window, UserService, ToastService) {
+  .controller('userCtrl', ['$scope', '$rootScope', '$location', '$window', 'UserService', 'ToastService',
+    function ($scope, $rootScope, $location, $window, UserService, ToastService) {
       $scope.hidemsg = true;
       $scope.hideProg = true;
 
@@ -27,6 +27,29 @@ angular.module('freelanceApp')
             $scope.msg = res.data.message;
           });
       };
+
+     $scope.adminLogIn = function() {
+          $scope.hideProg = false;
+          var formData = {
+                  emailAddress: $scope.email,
+                  password: $scope.password
+              };
+          UserService.AdminLogIn(formData)
+            .then(function(res) {
+              $scope.hideProg = true;
+              $window.sessionStorage.token = res.data.token;
+              $window.sessionStorage.user = res.data.user;
+              $window.sessionStorage.admin = 'admin';
+              $location.path("/admin-profile");
+             },
+              function(res) {
+              $scope.hidemsg = false;
+              $scope.hideProg = true;
+              ToastService.showToast('Error occured');
+              console.log(res.data)
+              $scope.msg = res.data.message;
+            });
+        };
 
         $scope.signUp = function() {
           $scope.hideProg = false;

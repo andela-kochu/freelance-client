@@ -2,7 +2,7 @@
   <md-card flex-gt-md="40" flex>
     <md-subheader layout-padding class="md-primary md-hue-2 customsub">
       <center>
-        <h1 class="md-title">Enter your Login credentials Here</h1>
+        <h1 class="md-title">Welcome SuperAdmin, Enter your crendentials</h1>
       </center>
     </md-subheader>
     <md-toolbar class="md-warn" layout-padding ng-hide="hidemsg">
@@ -28,26 +28,11 @@
           </div>
         </md-input-container>
         <div class="md-actions" layout="row" layout-align="center center">
-          <md-button id="loginBtn" ng-disabled="loginForm.$invalid" flex ng-click="logIn()" class="md-raised md-primary md-hue-2">Login</md-button>
-        </div>
-        <div layout layout-margin layout-align="center center">
-         <span  style="text-align: center;">Don't have an account? &nbsp;<a href="#/signup">Sign Up</a></span>
+          <md-button id="loginBtn" ng-disabled="loginForm.$invalid" flex ng-click="adminLogIn()" class="md-raised md-primary md-hue-2">Login</md-button>
         </div>
       </form>
       <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary">
       </md-progress-linear>
-    </md-card-content>
-    <md-card-content layout-align="center center">
-      <span layout layout-align="center center">or login with</span>
-      <div flex layout layout-align="center center">
-        <md-button  flex ng-href="https://freelance-app.herokuapp.com/api/v1/auth/linkedin">
-          <img layout-align="center center"width="45%" height="12%" ng-src="assets/img/Logo-2C-101px-TM.png">
-        </md-button>
-        <md-button  flex ng-href="https://freelance-app.herokuapp.com/api/v1/auth/google">
-          <img  layout-align="center center" width="40%" height="10%" ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_Google_2013_Official.svg/1280px-Logo_Google_2013_Official.svg.png">
-          <!-- <md-icon md-svg-src="assets/img/icons/google-glass.svg" class="google"></md-icon>oogle -->
-        </md-button>
-      </div>
     </md-card-content>
   </md-card>
 </md-content>

@@ -48,6 +48,11 @@ angular.module('freelanceApp').config([
           templateUrl: 'app/partials/signin.view.html',
           controller: 'userCtrl'
         })
+        .state('admin', {
+          url: '/admin',
+          templateUrl: 'app/partials/admin.signin.view.html',
+          controller: 'userCtrl'
+        })
         .state('signup', {
           url: '/signup',
           templateUrl: 'app/partials/signup.view.html',
@@ -55,11 +60,41 @@ angular.module('freelanceApp').config([
         })
         .state('postedjobs', {
           url: '/profile/myjobs',
-          templateUrl: 'app/partials/view.post.job.modal.html',
+          templateUrl: 'app/partials/view.post.job.html',
           controller: 'myJobsCtrl',
           resolve: {
             postJobsPromise: ['JobService', function(JobService){
               return JobService.getUserJob();
+            }]
+          }
+        })
+        .state('appliedJobs', {
+          url: '/profile/jobs/applied',
+          templateUrl: 'app/partials/view.applied.job.html',
+          controller: 'appliedCtrl',
+          resolve: {
+            postJobsPromise: ['UserService', function(UserService){
+              return UserService.profile();
+            }]
+          }
+        })
+        .state('allpostedjobs', {
+          url: '/admin-profile/all-jobs',
+          templateUrl: 'app/partials/admin.view.post.job.html',
+          controller: 'allJobsCtrl',
+          resolve: {
+            postJobsPromise: ['JobService', function(JobService){
+              return JobService.getAll();
+            }]
+          }
+        })
+        .state('allUsers', {
+          url: '/admin-profile/all-users',
+          templateUrl: 'app/partials/admin.view.users.html',
+          controller: 'allUsersCtrl',
+          resolve: {
+            postJobsPromise: ['UserService', function(UserService){
+              return UserService.getAll();
             }]
           }
         })
@@ -69,7 +104,17 @@ angular.module('freelanceApp').config([
           controller: 'profileCtrl',
           resolve: {
             profilePromise: ['UserService', function(UserService){
-              UserService.profile();
+              return UserService.profile();
+            }]
+          }
+        })
+        .state('admin-profile', {
+          url: '/admin-profile',
+          templateUrl: 'app/partials/admin.profile.view.html',
+          controller:'adminProfileCtrl',
+          resolve: {
+            profilePromise: ['UserService', function(UserService){
+              return UserService.profile();
             }]
           }
         });
@@ -78,19 +123,19 @@ angular.module('freelanceApp').config([
     $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$window', '$timeout', '$rootScope',
           function($q, $location, $localStorage, $window, $timeout, $rootScope) {
             return {
-                'request': function (config) {
-                    var querytoken = $location.search().token;
-                    var queryUser = $location.search().user;
-                    $location.search('token', null);
-                    $location.search('user', null);
-                    if(!$window.sessionStorage.token && querytoken){
-                        $window.sessionStorage.token = querytoken;
-                        $window.sessionStorage.user = queryUser;
-                    }
-                    if ($window.sessionStorage.token ||  querytoken) {
-                        config.headers.Authorization = $window.sessionStorage.token || querytoken;
-                    }
-                    return config;
+              'request': function (config) {
+                  var querytoken = $location.search().token;
+                  var queryUser = $location.search().user;
+                  $location.search('token', null);
+                  $location.search('user', null);
+                  if(!$window.sessionStorage.token && querytoken){
+                      $window.sessionStorage.token = querytoken;
+                      $window.sessionStorage.user = queryUser;
+                  }
+                  if ($window.sessionStorage.token ||  querytoken) {
+                      config.headers.Authorization = $window.sessionStorage.token || querytoken;
+                  }
+                  return config;
                 },
 
                 // optional method
