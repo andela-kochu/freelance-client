@@ -18,7 +18,7 @@
             <div ng-message="required">*</div>
           </div>
         </md-input-container>
-        <md-input-container>
+        <md-input-container md-no-float>
           <md-icon md-svg-src="assets/img/icons/ic_email_24px.svg" class="email"></md-icon>
           <input name="emailName" ng-model="email" type="email" placeholder="Email (required)" ng-required="true">
           <div ng-messages="signupForm.emailName.$error">
@@ -33,7 +33,7 @@
             <div ng-message="required">*</div>
           </div>
         </md-input-container>
-        <md-input-container>
+        <md-input-container md-no-float>
           <md-icon md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon>
           <input name="phone" ng-model="phone" type="number" placeholder="Phone Number" ng-minlength="11" ng-maxlength="13">
           <div ng-messages="signupForm.phone.$error">
@@ -50,7 +50,7 @@
       </md-progress-linear>
     </md-card-content>
     <md-card-content layout-align="center center">
-      <span layout layout-margin layout-align="center center">You can also register with</span>
+      <span layout layout layout-align="center center" style="text-align: center;">You can also register with</span>
       <div flex layout layout-align="center center">
         <md-button  flex ng-href="https://freelance-app.herokuapp.com/api/v1/auth/linkedin">
           <img layout-align="center center"width="45%" height="12%" ng-src="assets/img/Logo-2C-101px-TM.png">

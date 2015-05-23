@@ -10,6 +10,10 @@ angular.module('freelanceApp')
       return $http.post(baseUrl + '/users/login', data);
     };
 
+    user.AdminLogIn = function(data) {
+      return $http.post(baseUrl + '/users/AdminLogIn', data);
+    };
+
     user.signUp = function(data) {
       return $http.post(baseUrl + '/users', data);
     };

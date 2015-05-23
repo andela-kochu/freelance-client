@@ -28,6 +28,28 @@ angular.module('freelanceApp')
           });
       };
 
+     $scope.adminLogIn = function() {
+          $scope.hideProg = false;
+          var formData = {
+                  emailAddress: $scope.email,
+                  password: $scope.password
+              };
+          UserService.AdminLogIn(formData)
+            .then(function(res) {
+              $scope.hideProg = true;
+              $window.sessionStorage.token = res.data.token;
+              $window.sessionStorage.user = res.data.user;
+              $location.path("/admin-profile");
+             },
+              function(res) {
+              $scope.hidemsg = false;
+              $scope.hideProg = true;
+              ToastService.showToast('Error occured');
+              console.log(res.data)
+              $scope.msg = res.data.message;
+            });
+        };
+
         $scope.signUp = function() {
           $scope.hideProg = false;
           var formData = {

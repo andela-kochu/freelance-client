@@ -32,15 +32,9 @@
             <strong>Tools:</strong>&nbsp;{{job.tools | truncate:50}}
           </div>
           <div style="
-            padding: 8px;
-            background: rgba(0, 0, 0, 0.04) !important;
+            padding: 4px;
+            background: rgba(0, 0, 0, 0.02) !important;
             ">
-            <div ng-show="job.description">
-              <strong>Description:</strong>
-              <div class="md-primary description" flex offset="5">
-                {{job.description | truncate:150}}
-              </div>
-            </div>
             <div layout-gt-md layout-sm="column"  layout-align='center center'>
               <p flex><strong >Posted:</strong>&nbsp;{{job.created | date: medium}}</p>
                <md-button ng-href="#/jobs/{{job.slug}}" flex-md="15" class="md-raised md-primary md-hue-2">View Job</md-button>
